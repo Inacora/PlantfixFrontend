@@ -1,119 +1,107 @@
-<aside class="flex flex-col items-center bg-white text-gray-700 shadow h-screen w-20 overflow-hidden">
-    <!-- Side Nav Bar-->
+<aside
+  class="flex flex-col bg-white text-gray-700 shadow h-screen transition-all duration-300"
+  [ngClass]="isOpen() ? 'w-64' : 'w-20'"
+>
+  <!-- Navigation Links -->
+  <ul class="flex-1">
+    <li class="hover:bg-gray-100">
+      <a
+        routerLink="/"
+        class="h-16 px-4 flex items-center space-x-4 w-full"
+      >
+        <svg
+          class="h-7 w-7"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.91"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M9 20H7C5.89543 20 5 19.1046 5 18V10.9199C5 10.336 5.25513 9.78132 5.69842 9.40136L10.6984 5.11564C11.4474 4.47366 12.5526 4.47366 13.3016 5.11564L18.3016 9.40136C18.7449 9.78132 19 10.336 19 10.9199V18C19 19.1046 18.1046 20 17 20H15M9 20V14C9 13.4477 9.44772 13 10 13H14C14.5523 13 15 13.4477 15 14V20M9 20H15"
+          />
+        </svg>
+        <span *ngIf="isOpen()" class="text-sm font-medium">Home</span>
+      </a>
+    </li>
 
-    <div class="h-16 flex items-center">
-        <!-- Logo Section -->
-        <a class="h-6 w-6 mx-auto">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M21.4498 10.275L11.9998 3.1875L2.5498 10.275L2.9998 11.625H3.7498V20.25H20.2498V11.625H20.9998L21.4498 10.275ZM5.2498 18.75V10.125L11.9998 5.0625L18.7498 10.125V18.75H14.9999V14.3333L14.2499 13.5833H9.74988L8.99988 14.3333V18.75H5.2498ZM10.4999 18.75H13.4999V15.0833H10.4999V18.75Z" fill="#080341"></path> </g></svg>
-        </a>
-    </div>
+    <li class="hover:bg-gray-100">
+      <a routerLink="/shop" class="h-16 px-4 flex items-center space-x-4 w-full">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.91">
+          <path d="M3.41,7.23H20.59v12a3.23,3.23,0,0,1-3.23,3.23H6.64A3.23,3.23,0,0,1,3.41,19.23Z"/>
+          <path d="M8.18,10.09V5.32A3.82,3.82,0,0,1,12,1.5a3.82,3.82,0,0,1,3.82,3.82v4.77"/>
+        </svg>
+        <span *ngIf="isOpen()" class="text-sm font-medium">Shop</span>
+      </a>
+    </li>
 
-    <ul>
-        <!-- Items Section -->
-        <li class="hover:bg-gray-100">
-            <a href="#" class="h-16 px-6 flex flex justify-center items-center w-full
-					focus:text-orange-500" routerLink="/"> 
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
-                    <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0
-							2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0
-							0-1.79 1.11z"></path>
-                </svg>
-
-            </a>
-        </li>
-
-        <li class="hover:bg-gray-100">
-            <a href="#" class="h-16 px-6 flex flex justify-center items-center w-full
-					focus:text-orange-500" routerLink="/planttips">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                </svg>
-
-            </a>
-        </li>
-
-        <li class="hover:bg-gray-100">
-            <a href="#" class="h-16 px-6 flex flex justify-center items-center w-full
-					focus:text-orange-500" routerLink="/shop">
-
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="3 6 5 6 21 6"></polyline>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2
-							0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                </svg>
-
-            </a>
-        </li>
-
-        <li class="hover:bg-gray-100">
-            <a href="#" class="h-16 px-6 flex flex justify-center items-center w-full
-					focus:text-orange-500" routerLink="/contact">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0
-							2-1.61L23 6H6"></path>
-                </svg>
-
-            </a>
-        </li>
-
-        <li class="hover:bg-gray-100">
-            <a href="/plant" class="h-16 px-6 flex flex justify-center items-center w-full
-					focus:text-orange-500" routerLink="/plant">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1
-							0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0
-							0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2
-							2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0
-							0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1
-							0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0
-							0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65
-							0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0
-							1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0
-							1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2
-							0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0
-							1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0
-							2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0
-							0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65
-							1.65 0 0 0-1.51 1z"></path>
-                </svg>
-            </a>
-        </li>
-
-        <li class="hover:bg-gray-100">
-            <a href="#" class="h-16 px-6 flex flex justify-center items-center w-full
-					focus:text-orange-500">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                </svg>
-            </a>
-        </li>
-
-    </ul>
-
-    <div class="mt-auto h-16 flex items-center w-full">
-        <!-- Action Section -->
-        <button class="h-16 w-10 mx-auto flex flex justify-center items-center
-				w-full focus:text-orange-500 hover:bg-red-200 focus:outline-none">
-            <svg class="h-5 w-5 text-red-700" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                <polyline points="16 17 21 12 16 7"></polyline>
-                <line x1="21" y1="12" x2="9" y2="12"></line>
+    <li class="hover:bg-gray-100">
+      <a routerLink="/planttips" class="h-16 px-4 flex items-center space-x-4 w-full">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.5c-3.81 0-6.5 2.743-6.5 6.119 0 1.536.632 2.572 1.425 3.56.172.215.347.422.527.635l.096.112c.21.25.427.508.63.774.404.531.783 1.128.995 1.834a.75.75 0 01-1.436.432c-.138-.46-.397-.89-.753-1.357a18.354 18.354 0 00-.582-.714l-.092-.11c-.18-.212-.37-.436-.555-.667C4.87 12.016 4 10.651 4 8.618 4 4.363 7.415 1 12 1s8 3.362 8 7.619c0 2.032-.87 3.397-1.755 4.5-.185.23-.375.454-.555.667l-.092.109c-.21.248-.405.481-.582.714-.356.467-.615.898-.753 1.357a.75.75 0 01-1.437-.432c.213-.706.592-1.303.997-1.834.202-.266.419-.524.63-.774l.095-.112c.18-.213.355-.42.527-.634.793-.99 1.425-2.025 1.425-3.561C18.5 5.243 15.81 2.5 12 2.5zM9.5 21.75a.75.75 0 01.75-.75h3.5a.75.75 0 010 1.5h-3.5a.75.75 0 01-.75-.75zM8.75 18a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z"/>
             </svg>
+        <span *ngIf="isOpen()" class="text-sm font-medium">Plant tips</span>
+      </a>
+    </li>
 
-        </button>
-    </div>
+    <li class="hover:bg-gray-100">
+      <a routerLink="/contact" class="h-16 px-4 flex items-center space-x-4 w-full">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M19.89,3.25H4.11a2,2,0,0,0-2,2v9.06a2,2,0,0,0,2,2H5.75l2.31,4a.85.85,0,0,0,1.48,0l2.32-4h8a2,2,0,0,0,2-2V5.25A2,2,0,0,0,19.89,3.25Z" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            <line x1="5.01" y1="7.86" x2="11.01" y2="7.86" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            <line x1="5.01" y1="11.86" x2="18.01" y2="11.86" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+        </svg>
+        <span *ngIf="isOpen()" class="text-sm font-medium">Contact</span>
+      </a>
+    </li>
+  </ul>
 
+  <!-- BOTTOM TOGGLE BUTTON (ya existe) -->
+  <div class="h-16 flex items-center w-full border-t">
+    <button
+      (click)="toggleSidebar()"
+      class="h-16 w-full flex justify-center items-center hover:bg-red-100 focus:outline-none"
+      aria-label="Toggle sidebar"
+    >
+    
+    <p *ngIf="isOpen()" class="flex items-center gap-8">
+    <svg
+        class="h-5 w-5 text-red-700"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        style="transform: scale(-1,1) translate(-24px,0);"
+    >
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg> Collapsed view
+    </p>
+      
+    <svg
+      *ngIf="!isOpen()"
+      class="h-5 w-5 text-red-700"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+    </button>
+  </div>
 </aside>

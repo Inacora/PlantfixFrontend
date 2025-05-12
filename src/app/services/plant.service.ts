@@ -8,8 +8,8 @@ export class PlantService {
 
   constructor(private http: HttpClient) {}
 
-  getPlants(): Observable<any[]> {
-    return this.http.get<any[]>('/api/plants');
+  getPlants(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 
   getPlant(id: string) {

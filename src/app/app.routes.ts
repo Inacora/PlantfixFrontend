@@ -40,6 +40,6 @@ export const routes: Routes = [{
 
     path: 'plants/new', component: PlantFormComponent 
 
-}
+}, 
 
 ];
