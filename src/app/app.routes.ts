@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { PlantComponent } from './plant/plant.component';
 import { PlantFormComponent } from './plant/plant-form/plant-form.component';
-import { PlantDetailComponent } from './plant/plant-detail/plant-detail.component';
+import { PlantShopComponent } from './plant-shop/plant-shop.component';
 
 export const routes: Routes = [{
     path: '',
@@ -37,9 +37,11 @@ export const routes: Routes = [{
 
     path: 'plants', component: PlantComponent 
 }, { 
-
     path: 'plants/new', component: PlantFormComponent 
 
-}, 
+}, {
+   path: 'plants/shop', component: PlantShopComponent
+}
+
 
 ];

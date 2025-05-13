@@ -1,58 +1,82 @@
 <div class="flex items-center justify-between mt-5 mb-4 border-b-2 border-gray-300">
   <h2 class="mb-4">New plant</h2>
   <div class="flex gap-2 mb-3">
-    <button href="/plants">Cancel</button>
+    <button routerLink="/plants">Cancel</button>
   </div>
 </div>
 
 <form [formGroup]="plantForm" (ngSubmit)="createPlant()">
   <div>
     <label for="name">Name</label>
-    <input
-      id="name"
-      formControlName="name"
-      type="text"
-      class="border border-gray-300 rounded p-2 w-full"
-      placeholder="Enter plant name"
-      required
-    />
-  </div>
-  <div>
-    <label for="dexcription">Description</label>
-    <textarea
-      id="description"
-      formControlName="description"
-      class="border border-gray-300 rounded p-2 w-full"
-      placeholder="Enter plant description"
-      required
-    ></textarea>
-  </div>
-  <div>
-    <label for="price">Price</label>
-    <input
-      id="price"
-      formControlName="price"
-      type="number"
-      class="border border-gray-300 rounded p-2 w-full"
-      placeholder="Enter plant price"
-      required
-    />
-  </div>
-  
-  <div>
-    <label for="image">Image</label>
-    <input
-      id="image"
-      formControlName="image"
-      type="text"
-      class="border border-gray-300 rounded p-2 w-full"
-      placeholder="Enter plant image URL"
-      required
-    />
+    <input id="name" formControlName="name" type="text" class="border border-gray-300 rounded p-2 w-full"
+      placeholder="Enter plant name" required />
+    @if (plantForm.get('name')?.invalid && plantForm.get('name')?.touched) {
+      <div class="text-red-500 text-sm mt-1">
+        Name is required.
+      </div>
+    }
   </div>
 
   <div>
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4" [disabled]="plantForm.invalid">
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" class="border border-gray-300 rounded p-2 w-full"
+      placeholder="Enter plant description" required></textarea>
+    @if (plantForm.get('description')?.invalid && plantForm.get('description')?.touched) {
+      <div class="text-red-500 text-sm mt-1">
+        Description is required.
+      </div>
+    }
+  </div>
+
+  <div>
+    <label for="price">Price</label>
+    <input id="price" formControlName="price" type="number" class="border border-gray-300 rounded p-2 w-full"
+      placeholder="Enter plant price" required />
+    @if (plantForm.get('price')?.invalid && plantForm.get('price')?.touched) {
+      <div class="text-red-500 text-sm mt-1">
+        Price is required and must be a valid number.
+      </div>
+    }
+  </div>
+
+  <div>
+    <label for="image_url">Image URL</label>
+    <input id="image_url" formControlName="image_url" type="text" class="border border-gray-300 rounded p-2 w-full"
+      placeholder="Enter plant image URL" required />
+    @if (plantForm.get('image_url')?.invalid && plantForm.get('image_url')?.touched) {
+      <div class="text-red-500 text-sm mt-1">
+        Image URL is required.
+      </div>
+    }
+  </div>
+
+  <div>
+    <label for="stock">Stock</label>
+    <input id="stock" formControlName="stock" type="number" class="border border-gray-300 rounded p-2 w-full"
+      placeholder="Enter plant stock" required />
+    @if (plantForm.get('stock')?.invalid && plantForm.get('stock')?.touched) {
+      <div class="text-red-500 text-sm mt-1">
+        Stock is required and must be a valid number.
+      </div>
+    }
+  </div>
+
+  <div>
+    <label for="family">Family</label>
+    <select id="family" formControlName="family" class="border border-gray-300 rounded p-2 w-full" required>
+      <option value="" disabled selected>Select plant family</option>
+      <option *ngFor="let family of families" [value]="family.id">{{ family.name }}</option>
+    </select>
+    @if (plantForm.get('family')?.invalid && plantForm.get('family')?.touched) {
+      <div class="text-red-500 text-sm mt-1">
+        Family is required.
+      </div>
+    }
+  </div>
+
+  <div>
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4"
+      [disabled]="plantForm.invalid">
       Create Plant
     </button>
   </div>

@@ -16,7 +16,8 @@ export class PlantFormComponent {
     name: new FormControl(''),
     description: new FormControl(''),
     price: new FormControl(''),
-    image: new FormControl('')
+    image: new FormControl(''),
+    stock: new FormControl(''),
   });
 
   constructor(private route: ActivatedRoute, private service: PlantService) {}
@@ -26,7 +27,8 @@ export class PlantFormComponent {
       name: this.plantForm.get('name')?.value,
       description: this.plantForm.get('description')?.value,
       price: this.plantForm.get('price')?.value,
-      image: this.plantForm.get('image')?.value
+      image: this.plantForm.get('image_url')?.value,
+      stock: this.plantForm.get('stock')?.value
     };
 
     this.service.createPlant(plant).subscribe(response => {
