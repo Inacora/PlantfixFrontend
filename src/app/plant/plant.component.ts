@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { PlantService } from '../services/plant.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-plant',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './plant.component.html',
   styleUrl: './plant.component.css'
 })

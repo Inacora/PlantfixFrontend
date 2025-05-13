@@ -1,14 +1,7 @@
 <div class="flex items-center justify-between mt-5 mb-4 border-b-2 border-gray-300">
   <h2 class="mb-4">New plant</h2>
   <div class="flex gap-2 mb-3">
-    <a href="/plants">Cancel</a>
-    <button
-      class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-      (click)="createPlant()"
-      [disabled]="plantForm.invalid"
-    >
-      Save
-    </button>
+    <button href="/plants">Cancel</button>
   </div>
 </div>
 
@@ -45,8 +38,9 @@
       required
     />
   </div>
+  
   <div>
-    <label for="image">Image URL</label>
+    <label for="image">Image</label>
     <input
       id="image"
       formControlName="image"
