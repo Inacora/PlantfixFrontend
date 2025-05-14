@@ -25,25 +25,25 @@ export class PlantFormComponent {
   constructor(private route: ActivatedRoute, private service: PlantService) {}
 
   plants: any[] = [];
+  uniquePlantFamilies: any[] = [];
 
   ngOnInit() {
     this.service.getPlants().subscribe(data => {
       this.plants = data as any[];
-    });
-  }
-
-  onSubmit() {
-    console.log(this.plantForm.value); // Para ver qué datos estás enviando
-    this.service.createPlant(this.plantForm.value).subscribe(
-      response => {
-        console.log('Planta creada:', response);
-      },
-      error => {
-        console.error('Error al crear la planta:', error);
-      }
-    );
-  }
   
+      const familyMap = new Map();
+      this.uniquePlantFamilies = this.plants
+        .map(p => p.plant_family)
+        .filter(family => {
+          if (!familyMap.has(family.id)) {
+            familyMap.set(family.id, true);
+            return true;
+          }
+          return false;
+        });
+    });
+  }  
+
   createPlant() {
     const plant = {
       name: this.plantForm.get('name')?.value,
