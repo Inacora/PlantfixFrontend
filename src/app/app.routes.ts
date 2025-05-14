@@ -23,7 +23,6 @@ export const routes: Routes = [{
         return import('./shop/shop.component').then(m => m.ShopComponent)
     }
 }, {
-    
     path: 'contact',
     loadComponent: () => { 
         return import('./contact/contact.component').then(m => m.ContactComponent)
@@ -36,11 +35,23 @@ export const routes: Routes = [{
 }, { 
 
     path: 'plants', component: PlantComponent 
+
 }, { 
     path: 'plants/new', component: PlantFormComponent 
 
 }, {
    path: 'plants/shop', component: PlantShopComponent
+
+}, {
+    path: 'login',
+    loadComponent: () => { 
+        return import('./login/login.component').then(m => m.LoginComponent)
+    }
+}, {
+    path: 'register',
+    loadComponent: () => {
+        return import('./register/register.component').then(m => m.RegisterComponent)
+    }
 }
 
 

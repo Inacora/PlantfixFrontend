@@ -23,10 +23,10 @@ export class LoginComponent {
       next: () => {
         this.auth.getUser().subscribe(user => {
           this.auth.setUser(user);
-          this.router.navigate(['/']); // redirige al home o dashboard
+          this.router.navigate(['/']); 
         });
       },
-      error: err => {
+      error: (err: any) => {
         this.errorMessage = 'Invalid credentials';
         console.error(err);
       }

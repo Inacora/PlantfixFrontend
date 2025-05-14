@@ -1,16 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private userSubject = new BehaviorSubject<any>(null);
-  user$ = this.userSubject.asObservable();
-
   constructor(private http: HttpClient) {}
 
   getUser() {
     return this.http.get('/user', { withCredentials: true });
+  }
+
+  login(credentials: { email: string; password: string }): Observable<any> {
+    // Replace with actual HTTP request implementation
+    return this.http.post('/api/login', credentials);
+  }
+  private userSubject = new BehaviorSubject<any>(null);
+  user$ = this.userSubject.asObservable();
+
+  register(data: any): Observable<any> {
+    return this.http.post('/api/register', data);
   }
 
   loadUser() {
