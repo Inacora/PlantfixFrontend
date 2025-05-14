@@ -16,8 +16,8 @@ export class PlantService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  createPlant(data: any) {
-    return this.http.post(this.apiUrl, data);
+  createPlant(plant: any) {
+    return this.http.post(this.apiUrl, plant);
   }
 
   updatePlant(id: string, data: any) {
@@ -27,4 +27,5 @@ export class PlantService {
   deletePlant(id: string) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
 }

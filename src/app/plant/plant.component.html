@@ -1,49 +1,44 @@
-<div
-  class="relative flex flex-col w-full h-full text-slate-700 bg-white dark:bg-zinc-700 shadow-md rounded-xl bg-clip-border">
-  <div class="relative mx-4 mt-4 text-slate-700 rounded-none bg-clip-border">
-    <div class="flex items-center justify-between ">
-      <div>
-        <h1 class="text-lg font-semibold text-slate-800 dark:text-white">Plant List</h1>
-        <p class="text-slate-500">Check the info before updating/deleting</p>
-      </div>
-      <div class="flex flex-col gap-2 shrink-0 sm:flex-row">
-        <div class="mx-3">
-          <div class="w-full max-w-sm min-w-[200px] relative">
-            <form id="search-form" action="" method="GET">
-              <input type="hidden">
-              <div class="relative">
-                <label for="search" class="sr-only">Search by plant</label>
-
-                <input id="search" placeholder="Search by plant..." name="search" type="search"
-                  value="" />
-
-                <button type="submit" aria-label="Buscar">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                  </svg>
-                </button>
-
-              </div>
-            </form>
-          </div>
+<div class="w-full mt-[12vh] mb-[2vh] p-2 text-slate-700 bg-white dark:bg-zinc-700 shadow-md rounded-xl bg-clip-border">
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-lg font-semibold text-slate-800 dark:text-white">Plant List</h1>
+      <p class="text-slate-500">Check the info before updating/deleting</p>
+    </div>
+    <div class="flex flex-col gap-2 shrink-0 sm:flex-row">
+      <div class="mx-3">
+        <div class="w-full max-w-sm min-w-[200px] relative">
+          <form id="search-form" action="" method="GET">
+            <input type="hidden">
+            <div class="relative">
+              <label for="search" class="sr-only">Search by plant</label>
+              <input id="search" placeholder="Search by plant..." name="search" type="search"
+                value="" />
+              <button type="submit" aria-label="Buscar">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+              </button>
+            </div>
+          </form>
         </div>
-        <button routerLink="/plants/new" class="flex items-center justify-center px-4 py-2 text-white bg-slate-700 rounded cursor-pointer hover:bg-slate-600">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2">
-            <path
-              d="M3 10C3 8.34315 4.34315 7 6 7H14C15.6569 7 17 8.34315 17 10V18C17 19.6569 15.6569 21 14 21H6C4.34315 21 3 19.6569 3 18V10Z"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M10 14V11M10 14V17M10 14H13M10 14H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round"></path>
-            <path d="M7 3L18 3C19.6569 3 21 4.34315 21 6L21 17" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          Add Plant
-        </button>
       </div>
+      <button routerLink="/plants/new" class="flex items-center justify-center px-4 py-2 text-white bg-slate-700 rounded cursor-pointer hover:bg-slate-600">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2">
+          <path
+            d="M3 10C3 8.34315 4.34315 7 6 7H14C15.6569 7 17 8.34315 17 10V18C17 19.6569 15.6569 21 14 21H6C4.34315 21 3 19.6569 3 18V10Z"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M10 14V11M10 14V17M10 14H13M10 14H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round"></path>
+          <path d="M7 3L18 3C19.6569 3 21 4.34315 21 6L21 17" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        Add Plant
+      </button>
     </div>
   </div>
+
 
   <div class="p-0">
     <table class="w-full mt-4 text-left table-auto">
@@ -250,7 +245,7 @@
       Siguiente
       </button>
       @endif
-    </div>
-  </div> -->
+    </div> -->
+  </div> 
 
 
