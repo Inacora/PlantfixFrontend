@@ -2,37 +2,32 @@ import { Routes } from '@angular/router';
 import { PlantComponent } from './plant/plant.component';
 import { PlantFormComponent } from './plant/plant-form/plant-form.component';
 import { PlantShopComponent } from './plant-shop/plant-shop.component';
+import { ContactComponent } from './contact/contact.component';
+import { ShopComponent } from './shop/shop.component';
+import { PlantTipsComponent } from './plant-tips/plant-tips.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [{
     path: '',
     pathMatch: 'full',
+    redirectTo: 'login'
+}, {
+    
+    path: 'home', component: HomeComponent
+},{
+    
+    path: 'planttips', component: PlantTipsComponent
+}, {
+    
+    path: 'shop', component: ShopComponent
+}, {
+    
+    path: 'contact', component: ContactComponent
 
-    loadComponent: () => { 
-        return import('./home/home.component').then(m => m.HomeComponent)
-    }
 }, {
+    path: 'plant', component: PlantComponent
     
-    path: 'planttips',
-    loadComponent: () => { 
-        return import('./plant-tips/plant-tips.component').then(m => m.PlantTipsComponent)
-    }
-}, {
-    
-    path: 'shop',
-    loadComponent: () => { 
-        return import('./shop/shop.component').then(m => m.ShopComponent)
-    }
-}, {
-    
-    path: 'contact',
-    loadComponent: () => { 
-        return import('./contact/contact.component').then(m => m.ContactComponent)
-    }
-}, {
-    path: 'plant',
-    loadComponent: () => { 
-        return import('./plant/plant.component').then(m => m.PlantComponent)
-    }
 }, { 
 
     path: 'plants', component: PlantComponent 
@@ -41,6 +36,9 @@ export const routes: Routes = [{
 
 }, {
    path: 'plants/shop', component: PlantShopComponent
+}, {
+
+    path: 'login', component: LoginComponent
 }
 
 
