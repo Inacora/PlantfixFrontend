@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PlantTipsComponent } from './plant-tips/plant-tips.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 export const routes: Routes = [{
     path: '',
@@ -34,7 +35,10 @@ export const routes: Routes = [{
 }, {
 
     path: 'login', component: LoginComponent
+}, {
+    path: 'register', component: RegisterComponent
 }
+
 
 
 ];

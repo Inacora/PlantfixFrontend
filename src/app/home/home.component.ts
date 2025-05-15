@@ -33,11 +33,4 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-
-  logout(){
-    this.svc.logout().subscribe({
-      next: (res: any) => this.router.navigate(['/login']),  
-      error: (err: any) => this.errMessage = err.error.message
-    })  
-  }
 }

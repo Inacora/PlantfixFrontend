@@ -31,14 +31,17 @@ export class LoginComponent implements OnInit {
     let { email, password } = this.loginForm.value;
     this.svc.login(email, password).subscribe({
       next: (res: any) => {
-        if (res.token) {
-          localStorage.setItem('authToken', res.token);
-        }
         this.router.navigate(['/home']);
       },
       error: (err: any) => {
-        this.errMessage = err;
+        const rawMessage = err.error.message || 'An unexpected error occurred';
+  
+        if (err.status === 422 && err.error.errors){
+          this.errMessage = 'Invalid email or password';
+        } else {
+          this.errMessage = rawMessage;
+        }
       }
     });
-  }
+  }  
 }
