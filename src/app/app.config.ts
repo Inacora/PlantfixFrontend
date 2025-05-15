@@ -4,7 +4,7 @@ import { provideHttpClient, withFetch, withInterceptors, withXsrfConfiguration }
 
 import { routes } from './app.routes';
 import { errInteInterceptor } from './_/helper/err-inte.interceptor'; 
-import { HttpTokenInterceptorInterceptor } from './_/helper/http-token.interceptor'; 
+import { HttpTokenInterceptorInterceptor } from './_/helper/http-token-interceptor.interceptor'; 
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withFetch(),
-      // withXsrfConfiguration({ cookieName: 'XSRF-TOKEN', headerName: 'X-XSRF-TOKEN' }), 
+      // withXsrfConfiguration({ cookieName: 'XSRF-TOKEN', headerName: 'Xsrf-headers' }), 
       withInterceptors([errInteInterceptor, HttpTokenInterceptorInterceptor]), 
     ) 
   ]

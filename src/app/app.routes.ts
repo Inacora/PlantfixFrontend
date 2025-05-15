@@ -3,7 +3,6 @@ import { PlantComponent } from './plant/plant.component';
 import { PlantFormComponent } from './plant/plant-form/plant-form.component';
 import { PlantShopComponent } from './plant-shop/plant-shop.component';
 import { ContactComponent } from './contact/contact.component';
-import { ShopComponent } from './shop/shop.component';
 import { PlantTipsComponent } from './plant-tips/plant-tips.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -20,11 +19,7 @@ export const routes: Routes = [{
     path: 'planttips', component: PlantTipsComponent
 }, {
     
-    path: 'shop', component: ShopComponent
-}, {
-    
     path: 'contact', component: ContactComponent
-
 }, {
     path: 'plant', component: PlantComponent
     
