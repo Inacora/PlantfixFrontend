@@ -1,12 +1,12 @@
 <div class="p-30">
   <div class="flex items-center justify-between mt-5 mb-4 border-b-2 border-gray-300">
-    <h2 class="mb-4">New plant</h2>
+    <h2 class="mb-4">{{ isEditMode ? 'Edit Plant' : 'Create Plant' }}</h2>
     <div class="flex gap-2 mb-3">
       <button routerLink="/plants">Cancel</button>
     </div>
   </div>
 
-  <form [formGroup]="plantForm" (ngSubmit)="createPlant()">
+  <form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="name">Name</label>
       <input id="name" formControlName="name" type="text" class="border border-gray-300 rounded p-2 w-full"
@@ -72,9 +72,8 @@
     </div>    
 
     <div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4"
-        [disabled]="plantForm.invalid">
-        Create Plant
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4">
+        {{ isEditMode ? 'Update' : 'Create' }}
       </button>
     </div>
   </form>

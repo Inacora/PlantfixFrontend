@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { PlantComponent } from './plant/plant.component';
 import { PlantFormComponent } from './plant/plant-form/plant-form.component';
-import { PlantShopComponent } from './plant-shop/plant-shop.component';
+import { PlantShopComponent } from './plant/plant-shop/plant-shop.component';
+import { PlantDetailComponent } from './plant/plant-detail/plant-detail.component';
 
 export const routes: Routes = [{
     path: '',
@@ -11,13 +12,11 @@ export const routes: Routes = [{
         return import('./home/home.component').then(m => m.HomeComponent)
     }
 }, {
-    
     path: 'planttips',
     loadComponent: () => { 
-        return import('./plant-tips/plant-tips.component').then(m => m.PlantTipsComponent)
+        return import('./plant/plant-tips/plant-tips.component').then(m => m.PlantTipsComponent)
     }
 }, {
-    
     path: 'contact',
     loadComponent: () => { 
         return import('./contact/contact.component').then(m => m.ContactComponent)
@@ -28,14 +27,14 @@ export const routes: Routes = [{
         return import('./plant/plant.component').then(m => m.PlantComponent)
     }
 }, { 
-
     path: 'plants', component: PlantComponent 
 }, { 
     path: 'plants/new', component: PlantFormComponent 
-
 }, {
    path: 'plants/shop', component: PlantShopComponent
+}, { 
+    path: 'plants/edit/:id', component: PlantFormComponent 
+}, {
+    path: 'plants/show/:id', component: PlantDetailComponent
 }
-
-
 ];
