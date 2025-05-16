@@ -22,6 +22,9 @@ export class PlantFormComponent {
     plant_family_id: new FormControl(''),
   });
 
+  
+  backendErrors: { [key: string]: string[] } = {};
+
   constructor(private route: ActivatedRoute, private service: PlantService) {}
 
   plants: any[] = [];
@@ -29,6 +32,7 @@ export class PlantFormComponent {
 
   ngOnInit() {
     this.service.getPlants().subscribe(data => {
+      this.backendErrors = {};
       this.plants = data as any[];
   
       const familyMap = new Map();
@@ -54,11 +58,19 @@ export class PlantFormComponent {
       plant_family_id: this.plantForm.get('plant_family_id')?.value
     };
 
-    this.service.createPlant(plant).subscribe(response => {
-      console.log('Plant saved successfully', response);
-    }, error => {
-      console.error('Error saving plant', error);
-    });
+    this.service.createPlant(plant).subscribe({
+      next: (response) => {
+        console.log('Plant saved successfully', response);
+        this.backendErrors = {};
+      },
+      error: (errorResponse) => {
+        if (errorResponse.status === 422) {
+          this.backendErrors = errorResponse.error.errors;
+        } else {
+          console.error('Unexpected error:', errorResponse);
+        }
+      }
+    });    
   }
 
   updatePlant() {
