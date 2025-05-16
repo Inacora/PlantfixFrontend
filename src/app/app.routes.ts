@@ -18,12 +18,6 @@ export const routes: Routes = [{
     }
 }, {
     
-    path: 'shop',
-    loadComponent: () => { 
-        return import('./shop/shop.component').then(m => m.ShopComponent)
-    }
-}, {
-    
     path: 'contact',
     loadComponent: () => { 
         return import('./contact/contact.component').then(m => m.ContactComponent)

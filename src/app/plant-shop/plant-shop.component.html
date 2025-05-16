@@ -1,4 +1,4 @@
-<div class="bg-[#f8f5ef] text-gray-800 min-h-screen pt-30 p-40">
+<div class="bg-[#f8f5ef] text-gray-800 min-h-screen pt-30 pb-20 p-40">
   <div class="container mx-auto">
     <!-- Encabezado -->
     <div class="flex justify-between items-center mb-4">
@@ -16,7 +16,7 @@
     <!-- Grid de productos -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
       @for (plant of plants; track plant.id) {
-        <div class="bg-white rounded shadow p-4 flex flex-col">
+        <div class="bg-white rounded-md shadow p-4 flex flex-col">
           <div class="relative">
             <img [src]="plant.image_url" [alt]="plant.name" class="mb-4 rounded w-full h-70 object-cover">
             
