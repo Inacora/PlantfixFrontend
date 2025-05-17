@@ -2,7 +2,7 @@
   <div class="container mx-auto">
     <!-- Encabezado -->
     <div class="flex justify-between items-center mb-4">
-         <!-- Resultados -->
+      <!-- Resultados -->
       <p class="text-sm">Showing {{ plants.length }} results.</p>
 
       <button class="border px-4 py-2 rounded flex items-center gap-2">
@@ -16,25 +16,35 @@
     <!-- Grid de productos -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
       @for (plant of plants; track plant.id) {
-        <div class="bg-white rounded-md shadow p-4 flex flex-col">
-          <div class="relative">
-            <img [src]="plant.image_url" [alt]="plant.name" class="mb-4 rounded w-full h-70 object-cover">
-            
-            @if (plant.stock < 5) {
-              <span class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">
-                ¡Pocas unidades!
-              </span>
-            }
-          </div>
+      <div class="bg-white rounded-md shadow p-4 flex flex-col">
+        <div class="relative">
+          <img [src]="plant.image_url" [alt]="plant.name" class="mb-4 rounded w-full h-70 object-cover">
 
-          <h3 class="font-semibold text-lg">{{ plant.name }}</h3>
-          <p class="text-sm text-gray-600 mb-1">{{ plant.description }}</p>
-          <p class="text-sm text-gray-500">Family: {{ plant.plant_family.name }}</p>
-          <p class="text-sm text-gray-600">Stock: {{ plant.stock }}</p>
-          <p class="text-lg font-bold mt-2">${{ plant.price }}</p>
+          @if (plant.stock < 5) { <span
+            class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">
+            ¡Pocas unidades!
+            </span>
+            }
         </div>
+
+        <h3 class="font-semibold text-lg">{{ plant.name }}</h3>
+        <p class="text-sm text-gray-600 mb-1">{{ plant.description }}</p>
+        <p class="text-sm text-gray-500">Family: {{ plant.plant_family.name }}</p>
+        <p class="text-sm text-gray-600">Stock: {{ plant.stock }}</p>
+        <p class="text-lg font-bold mt-2">${{ plant.price }}</p>
+
+        @if(plant.stock > 0){
+        <button (click)="addToCart(plant)" class="mt-auto bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add to cart
+        </button>}
+        @else{
+        <button class="mt-auto px-4 py-2 rounded">
+          Out of stock
+        </button>
+        }
+
+      </div>
       }
     </div>
   </div>
 </div>
-

@@ -3,7 +3,7 @@ import { PlantComponent } from './plant/plant.component';
 import { PlantFormComponent } from './plant/plant-form/plant-form.component';
 import { PlantShopComponent } from './plant/plant-shop/plant-shop.component';
 import { PlantDetailComponent } from './plant/plant-detail/plant-detail.component';
-
+import { CartComponent } from './cart/cart.component';
 export const routes: Routes = [{
     path: '',
     pathMatch: 'full',
@@ -36,5 +36,7 @@ export const routes: Routes = [{
     path: 'plants/edit/:id', component: PlantFormComponent 
 }, {
     path: 'plants/show/:id', component: PlantDetailComponent
-}, 
+}, {
+    path: 'cart', component: CartComponent
+}
 ];

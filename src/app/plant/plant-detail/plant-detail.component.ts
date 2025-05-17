@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PlantService } from '../../services/plant.service';
+import { PlantService } from '../../services/plants/plant.service';
 import { RouterModule } from '@angular/router';
 
 @Component({
