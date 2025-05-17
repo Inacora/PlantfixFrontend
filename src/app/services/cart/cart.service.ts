@@ -23,13 +23,14 @@ export class CartService {
     }
     const found = this.cart.find(p => p.id === plant.id);
     if (found) {
-      if (found.stock > 0) {
+      if (found.quantity < found.stock) {
         found.quantity++;
-        found.stock--;
         this.updateCartCount();
+      } else {
+        alert("You cannot add more than the available quantity in stock");
       }
     } else {
-      this.cart.push({ ...plant, quantity: 1, stock: plant.stock - 1 });
+      this.cart.push({ ...plant, quantity: 1 });
       this.updateCartCount();
     }
   }
@@ -54,7 +55,6 @@ export class CartService {
   getTotalPrice() {
     return this.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
-
 
   removeFromCart(item: any) {
     this.cart = this.cart.filter(i => i.id !== item.id);
