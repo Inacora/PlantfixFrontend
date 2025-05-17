@@ -37,7 +37,7 @@ export class RegisterComponent {
       name: this.userForm.get('name')?.value,
       email: this.userForm.get('email')?.value,
       password: this.userForm.get('password')?.value,
-
+      role: 'user',
     };
 
     this.service.createUser(user).subscribe(response => {
