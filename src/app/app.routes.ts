@@ -36,5 +36,5 @@ export const routes: Routes = [{
     path: 'plants/edit/:id', component: PlantFormComponent 
 }, {
     path: 'plants/show/:id', component: PlantDetailComponent
-}
+}, 
 ];
