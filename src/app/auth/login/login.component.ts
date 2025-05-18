@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpTokenService } from '../../services/http-token.service';
+import { HttpTokenService } from '../../services/token/http-token.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -23,13 +23,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: [''],
-      password: ['']
+      password: [''],
+      remember: [false],
     });
   }
 
   onSubmit() {
-    let { email, password } = this.loginForm.value;
-    this.svc.login(email, password).subscribe({
+   let { email, password, remember } = this.loginForm.value;
+    this.svc.login(email, password, remember).subscribe({
       next: (res: any) => {
         this.router.navigate(['/home']);
       },

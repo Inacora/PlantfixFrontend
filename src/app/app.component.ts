@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/shared/header/header.component";
 import { SidebarComponent } from "./components/shared/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
-import { HttpTokenService } from './services/http-token.service';
+import { HttpTokenService } from './services/token/http-token.service';
 
 @Component({
   selector: 'app-root',

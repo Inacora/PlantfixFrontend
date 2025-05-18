@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './plant-form.component.css'
 })
 
-export class PlantFormComponent implements OnInit{
+export class PlantFormComponent implements OnInit {
   plantForm = new FormGroup({
     name: new FormControl(''),
     description: new FormControl(''),
@@ -22,7 +22,7 @@ export class PlantFormComponent implements OnInit{
     plant_family_id: new FormControl(''),
   });
 
-  constructor(private route: ActivatedRoute, private service: PlantService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private service: PlantService, private router: Router) { }
 
   plants: any[] = [];
   uniquePlantFamilies: any[] = [];
@@ -33,11 +33,11 @@ export class PlantFormComponent implements OnInit{
   ngOnInit() {
     this.plantId = this.route.snapshot.paramMap.get('id');
     this.isEditMode = !!this.plantId;
-  
+
     this.service.getPlants().subscribe(data => {
       this.backendErrors = {};
       this.plants = data as any[];
-  
+
       const familyMap = new Map();
       this.uniquePlantFamilies = this.plants
         .map(p => p.plant_family)
@@ -49,13 +49,13 @@ export class PlantFormComponent implements OnInit{
           return false;
         });
     });
-  
+
     if (this.isEditMode && this.plantId) {
       this.service.getPlant(this.plantId).subscribe(plant => {
         this.plantForm.patchValue(plant);
       });
     }
-  }  
+  }
 
   onSubmit() {
     if (this.isEditMode) {
@@ -64,7 +64,6 @@ export class PlantFormComponent implements OnInit{
       this.createPlant();
     }
   }
-
 
   createPlant() {
     const plant = {
@@ -89,7 +88,7 @@ export class PlantFormComponent implements OnInit{
           console.error('Unexpected error:', errorResponse);
         }
       }
-    });    
+    });
   }
 
   updatePlant() {
@@ -119,10 +118,10 @@ export class PlantFormComponent implements OnInit{
       });
     }
   }
-    
+
   deletePlant() {
     if (!this.plantId) return;
-  
+
     if (confirm('Are you sure you want to delete this plant?')) {
       this.service.deletePlant(this.plantId).subscribe({
         next: () => {
@@ -133,5 +132,5 @@ export class PlantFormComponent implements OnInit{
         }
       });
     }
-  }  
+  }
 } 

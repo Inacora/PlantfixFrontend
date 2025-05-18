@@ -2,9 +2,8 @@ import { UserService } from '../../services/user.service';
 import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { Component } from '@angular/core';
-
 
 @Component({
   selector: 'app-register',
@@ -17,33 +16,37 @@ export class RegisterComponent {
     name: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
-    confirmPassword: new FormControl(''),
+    confirmPassword: new FormControl('')
   });
 
-  constructor(private route: ActivatedRoute, private service: UserService) { }
+  constructor(private route: ActivatedRoute, private service: UserService, private router: Router) { }
 
-
- passwordsMatchValidator(form: AbstractControl) {
-    const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { passwordsMismatch: true };
-  }
+  backendErrors: { [key: string]: string[] } = {};
 
   createUser() {
-       if (this.userForm.valid) {
-      const { confirmPassword, ...userData } = this.userForm.value;
-    const user = {
-      name: this.userForm.get('name')?.value,
-      email: this.userForm.get('email')?.value,
-      password: this.userForm.get('password')?.value,
-      role: 'user',
-    };
+      const user = {
+        name: this.userForm.get('name')?.value,
+        email: this.userForm.get('email')?.value,
+        password: this.userForm.get('password')?.value,
+        password_confirmation: this.userForm.get('confirmPassword')?.value, 
+        role: 'user',
+      };
 
-    this.service.createUser(user).subscribe(response => {
-      console.log('User saved successfully', response);
-    }, error => {
-      console.error('Error saving user', error);
-    });
+      this.service.createUser(user).subscribe({
+        next: (response) => {
+        console.log('User saved successfully', response);
+        this.backendErrors = {};
+        this.router.navigate(['/login']);
+      },
+      error: (errorResponse) => {
+        if (errorResponse.status === 422) {
+          this.backendErrors = errorResponse.error.errors;
+          } else {
+            console.error('Unexpected error:', errorResponse);
+          }
+        }
+      });
+    }
   }
-}
-}
+
+  

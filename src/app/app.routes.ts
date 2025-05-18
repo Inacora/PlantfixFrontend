@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
 import { PlantComponent } from './plant/plant.component';
 import { PlantFormComponent } from './plant/plant-form/plant-form.component';
-import { ContactComponent } from './contact/contact.component';
-import { PlantTipsComponent } from './plant-tips/plant-tips.component';
+import { PlantTipsComponent } from './plant/plant-tips/plant-tips.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -17,12 +16,7 @@ export const routes: Routes = [{
 }, {
     
     path: 'home', component: HomeComponent
-},{
-    
-    path: 'contact', component: ContactComponent
-}, {
-    path: 'plant', component: PlantComponent
-    
+},{  
     path: 'planttips',
     loadComponent: () => { 
         return import('./plant/plant-tips/plant-tips.component').then(m => m.PlantTipsComponent)
@@ -48,10 +42,6 @@ export const routes: Routes = [{
     path: 'login', component: LoginComponent
 }, {
     path: 'register', component: RegisterComponent
-}
-
-
-
 }, { 
     path: 'plants/edit/:id', component: PlantFormComponent 
 }, {

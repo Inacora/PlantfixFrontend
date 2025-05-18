@@ -1,10 +1,10 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withFetch, withInterceptors, withXsrfConfiguration } from '@angular/common/http'; 
+import { provideHttpClient, withFetch, withInterceptors, withXsrfConfiguration } from '@angular/common/http';
 
 import { routes } from './app.routes';
-import { errInteInterceptor } from './_/helper/err-inte.interceptor'; 
-import { HttpTokenInterceptorInterceptor } from './_/helper/http-token-interceptor.interceptor'; 
+import { errInteInterceptor } from './_/helper/err-inte.interceptor';
+import { HttpTokenInterceptorInterceptor } from './_/helper/http-token-interceptor.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,8 +12,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withFetch(),
-      // withXsrfConfiguration({ cookieName: 'XSRF-TOKEN', headerName: 'Xsrf-headers' }), 
-      withInterceptors([errInteInterceptor, HttpTokenInterceptorInterceptor]), 
-    ) 
+      withXsrfConfiguration({ cookieName: 'XSRF-TOKEN', headerName: 'X-XSRF-TOKEN' }),
+      withInterceptors([errInteInterceptor, HttpTokenInterceptorInterceptor]),
+    )
   ]
 };
