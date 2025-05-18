@@ -1,4 +1,4 @@
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/users/user.service';
 import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';

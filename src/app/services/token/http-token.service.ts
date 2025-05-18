@@ -14,8 +14,8 @@ export class HttpTokenService {
     return this.http.get<any>(`${baseURL}/sanctum/csrf-cookie`, { withCredentials: true, observe: 'response' });
   }
 
-  login(email: string, password: string, remember: boolean) {
-    return this.http.post<any>(`${baseURL}/login`, {email, password, remember}, { withCredentials: true });
+  login(email: string, password: string,) {
+    return this.http.post<any>(`${baseURL}/login`, {email, password}, { withCredentials: true });
   }
 
   logout(){

@@ -24,13 +24,12 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       email: [''],
       password: [''],
-      remember: [false],
     });
   }
 
   onSubmit() {
-   let { email, password, remember } = this.loginForm.value;
-    this.svc.login(email, password, remember).subscribe({
+   let { email, password } = this.loginForm.value;
+    this.svc.login(email, password).subscribe({
       next: (res: any) => {
         this.router.navigate(['/home']);
       },
