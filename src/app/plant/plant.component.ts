@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PlantService } from '../services/plant.service';
+import { PlantService } from '../services/plants/plant.service';
 import { RouterModule } from '@angular/router';
 
 @Component({

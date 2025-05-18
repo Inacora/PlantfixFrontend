@@ -1,11 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PlantService } from '../../services/plants/plant.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-plant-detail',
-  imports: [],
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './plant-detail.component.html',
-  styleUrl: './plant-detail.component.css'
+  styleUrls: ['./plant-detail.component.css'] 
 })
-export class PlantDetailComponent {
+export class PlantDetailComponent implements OnInit {
+  plantID: string | null = null;
+  plant: any = null;
 
+  constructor(
+    private route: ActivatedRoute,
+    private plantService: PlantService
+  ) {}
+
+  ngOnInit() {
+    this.plantID = this.route.snapshot.paramMap.get('id');
+    if (this.plantID) {
+      this.plantService.getPlant(this.plantID).subscribe(data => {
+        this.plant = data;
+      });
+    }
+  }
 }
+

@@ -1,20 +1,20 @@
 <div class="p-30">
   <div class="flex items-center justify-between mt-5 mb-4 border-b-2 border-gray-300">
-    <h2 class="mb-4">New plant</h2>
+    <h2 class="mb-4">{{ isEditMode ? 'Edit Plant' : 'Create Plant' }}</h2>
     <div class="flex gap-2 mb-3">
       <button routerLink="/plants">Cancel</button>
     </div>
   </div>
 
-  <form [formGroup]="plantForm" (ngSubmit)="createPlant()">
+  <form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="name">Name</label>
       <input id="name" formControlName="name" type="text" class="border border-gray-300 rounded p-2 w-full"
         placeholder="Enter plant name" required />
-      @if (plantForm.get('name')?.invalid && plantForm.get('name')?.touched) {
-      <div class="text-red-500 text-sm mt-1">
-        Name is required.
-      </div>
+      @if (backendErrors['name']) {
+        @for (error of backendErrors['name']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
       }
     </div>
 
@@ -22,21 +22,21 @@
       <label for="description">Description</label>
       <textarea id="description" formControlName="description" class="border border-gray-300 rounded p-2 w-full"
         placeholder="Enter plant description" required></textarea>
-      @if (plantForm.get('description')?.invalid && plantForm.get('description')?.touched) {
-      <div class="text-red-500 text-sm mt-1">
-        Description is required.
-      </div>
+      @if (backendErrors['description']) {
+        @for (error of backendErrors['description']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
       }
     </div>
 
     <div>
       <label for="price">Price</label>
-      <input id="price" formControlName="price" type="number" class="border border-gray-300 rounded p-2 w-full"
+      <input id="price" formControlName="price" type="text" class="border border-gray-300 rounded p-2 w-full"
         placeholder="Enter plant price" required />
-      @if (plantForm.get('price')?.invalid && plantForm.get('price')?.touched) {
-      <div class="text-red-500 text-sm mt-1">
-        Price is required and must be a valid number.
-      </div>
+      @if (backendErrors['price']) {
+        @for (error of backendErrors['price']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
       }
     </div>
 
@@ -50,10 +50,10 @@
       <label for="stock">Stock</label>
       <input id="stock" formControlName="stock" type="number" class="border border-gray-300 rounded p-2 w-full"
         placeholder="Enter plant stock" required />
-      @if (plantForm.get('stock')?.invalid && plantForm.get('stock')?.touched) {
-      <div class="text-red-500 text-sm mt-1">
-        Stock is required and must be a valid number.
-      </div>
+      @if (backendErrors['stock']) {
+        @for (error of backendErrors['stock']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
       }
     </div>
 
@@ -64,19 +64,23 @@
           <option [value]="family.id">{{ family.name }}</option>
         }
       </select>
-    
-      @if (plantForm.get('plant_family_id')?.invalid && plantForm.get('plant_family_id')?.touched) {
-        <div class="text-red-500 text-sm mt-1">
-          Family is required.
-        </div>
+      @if (backendErrors['plant_family_id']) {
+        @for (error of backendErrors['plant_family_id']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
       }
     </div>    
 
     <div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4"
-        [disabled]="plantForm.invalid">
-        Create Plant
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4">
+        {{ isEditMode ? 'Update' : 'Create' }}
       </button>
+
+      @if (isEditMode) {
+      <button type="button" (click)="deletePlant()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-4">
+        Delete
+      </button>
+      }
     </div>
   </form>
 </div>

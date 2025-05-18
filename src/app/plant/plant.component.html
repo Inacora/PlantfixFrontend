@@ -1,5 +1,5 @@
-<div class="w-full mt-[12vh] mb-[2vh] p-2 text-slate-700 bg-white dark:bg-zinc-700 shadow-md rounded-xl bg-clip-border">
-  <div class="flex items-center justify-between">
+<div class="w-full mt-[14vh] mb-[2vh] py-2 text-slate-700 bg-white dark:bg-zinc-700 shadow-lg rounded-xl ">
+  <div class="flex items-center justify-between px-4 gap-80">
     <div>
       <h1 class="text-lg font-semibold text-slate-800 dark:text-white">Plant List</h1>
       <p class="text-slate-500">Check the info before updating/deleting</p>
@@ -55,46 +55,11 @@
               </svg>
             </p>
           </th>
-          <th
-            class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
-            <p class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
-              Description
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                stroke="currentColor" aria-hidden="true" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
-              </svg>
-            </p>
-          </th>
 
           <th
             class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
             <p class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
               Price
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                stroke="currentColor" aria-hidden="true" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
-              </svg>
-            </p>
-          </th>
-
-          <th
-            class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
-            <p class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
-              Family
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                stroke="currentColor" aria-hidden="true" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
-              </svg>
-            </p>
-          </th>
-
-          <th
-            class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
-            <p class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
-              Image
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                 stroke="currentColor" aria-hidden="true" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -137,33 +102,12 @@
               </p>
             </div>
           </td>
-          <td class="p-4 border-b border-slate-200">
-            <div class="flex flex-col items-center">
-              <p class="text-sm text-slate-500 dark:text-white">
-                {{ plant.description }}
-              </p>
-            </div>
-          </td>
 
           <td class="p-4 border-b border-slate-200">
             <div class="flex flex-col items-center">
               <p class="text-sm text-slate-500 dark:text-white">
                 {{ plant.price }}
               </p>
-            </div>
-          </td>
-
-          <td class="p-4 border-b border-slate-200">
-            <div class="flex flex-col items-center">
-              <p class="text-sm text-slate-500 dark:text-white">
-                {{ plant.plant_family.name }}
-              </p>
-            </div>
-          </td>
-
-          <td class="p-4 border-b border-slate-200">
-            <div class="flex flex-col items-center">
-              <img src="{{ plant.image_url }}" alt="Plant Image" class="w-16 h-16 object-cover rounded-lg">
             </div>
           </td>
 
@@ -178,7 +122,7 @@
           <td class="p-4 border-b border-slate-200">
             <div class="flex justify-center items-center gap-2">
               <!-- Botón Ver -->
-              <button href="" class="relative h-10 max-h-[40px] w-10 max-w-[40px]" aria-label="Ver">
+              <button routerLink="/plants/show/{{ plant.id }}" class="relative h-10 max-h-[40px] w-10 max-w-[40px]" aria-label="Ver">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                   stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -188,18 +132,10 @@
               </button>
 
               <!-- Botón Editar -->
-              <button class="relative h-10 max-h-[40px] w-10 max-w-[40px]" aria-label="Editar">
+              <button routerLink="/plants/edit/{{ plant.id }}" class="relative h-10 max-h-[40px] w-10 max-w-[40px]" aria-label="Editar">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
                   stroke="currentColor" class="w-6 h-6">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8787 3.70705C17.0503 2.53547 18.9498 2.53548 20.1213 3.70705L20.2929 3.87862C21.4645 5.05019 21.4645 6.94969 20.2929 8.12126L18.5556 9.85857L8.70713 19.7071C8.57897 19.8352 8.41839 19.9261 8.24256 19.9701L4.24256 20.9701C3.90178 21.0553 3.54129 20.9554 3.29291 20.7071C3.04453 20.4587 2.94468 20.0982 3.02988 19.7574L4.02988 15.7574C4.07384 15.5816 4.16476 15.421 4.29291 15.2928L14.1989 5.38685L15.8787 3.70705ZM18.7071 5.12126C18.3166 4.73074 17.6834 4.73074 17.2929 5.12126L16.3068 6.10738L17.8622 7.72357L18.8787 6.70705C19.2692 6.31653 19.2692 5.68336 18.8787 5.29283L18.7071 5.12126ZM16.4477 9.13804L14.8923 7.52185L5.90299 16.5112L5.37439 18.6256L7.48877 18.097L16.4477 9.13804Z" fill="#000000"></path> </g></svg>
-              </button>
-
-              <!-- Botón Eliminar -->
-              <button class="relative h-10 max-h-[40px] w-10 max-w-[40px]" type="submit" aria-label="Eliminar">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                  stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
               </button>
             </div>
           </td>

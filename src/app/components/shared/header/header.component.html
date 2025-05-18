@@ -1,65 +1,73 @@
-<header class="flex fixed justify-between items-center bg-white border-b border-gray-300 h-[10vh] w-full p-4 overflow-hidden z-100">
-    <div class="flex items-center gap-2.5">
-        <img src="logo.png" alt="Plant Shop Logo" class="h-12">
-        <span class="text-5xl">Plantfix</span>
-    </div>
+<header
+  class="flex fixed justify-between items-center bg-white border-b border-gray-300 h-[10vh] w-full p-4 overflow-hidden z-100">
+  <div class="flex items-center gap-2.5">
+    <img src="logo.png" alt="Plant Shop Logo" class="h-12">
+    <span class="text-5xl">Plantfix</span>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <button routerLink="/cart" class="relative cursor-pointer border-r border-gray-300 pr-8">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1" fill="currentColor" />
+        <circle cx="20" cy="21" r="1" fill="currentColor" />
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2"
+          fill="none" />
+      </svg>
+
+      <span
+        class="absolute top-[-6px] left-[28px] bg-[#69b85d] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+        {{cartItemCount}}
+      </span>
+    </button>
 
     <!-- Dropdown menu -->
-    <div class="relative inline-block text-left">
-        <div>
-          <button
-            type="button"
-            (click)="toggleMenu()"
-            class="inline-flex items-center justify-center w-full rounded-md px-4 py-2 text-sm font-medium text-gray-300 bg-gray-800 hover:bg-gray-100 focus:outline-none"
-            id="menu-button"
-            aria-expanded="true"
-            aria-haspopup="true"
-          >
-            I
-            <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path
-                fill-rule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
-    
-        <!-- Menu -->
-        <div
-          *ngIf="isMenuOpen"
-          class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="menu-button"
-          tabindex="-1"
-        >
-          <div class="p-2 text-sm font-normal" role="none">
-            <div class="flex items-center gap-2 px-2 py-2 text-left text-sm">
-              <div class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg bg-gray-200 items-center justify-center">
-                I
-              </div>
-              <div class="grid flex-1 text-left text-sm leading-tight">
-                <span class="truncate font-semibold">Inacora</span>
-                <span class="truncate text-xs text-gray-500">inacorateresacamposalonsoalumno.ieselrincon.es</span>
-              </div>
+    <div class="relative inline-block text-left pl-4">
+      <div>
+        <button type="button" (click)="toggleMenu()"
+          class="inline-flex items-center justify-center w-full rounded-md px-4 py-2 text-sm font-medium text-gray-300 bg-gray-800 hover:bg-gray-100 focus:outline-none"
+          id="menu-button" aria-expanded="true" aria-haspopup="true">
+          I
+          <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menu -->
+      <div *ngIf="isMenuOpen"
+        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div class="p-2 text-sm font-normal" role="none">
+          <div class="flex items-center gap-2 px-2 py-2 text-left text-sm">
+            <div
+              class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg bg-gray-200 items-center justify-center">
+              I
+            </div>
+            <div class="grid flex-1 text-left text-sm leading-tight">
+              <span class="truncate font-semibold">Inacora</span>
+              <span class="truncate text-xs text-gray-500">inacorateresacamposalonsoalumno.ieselrincon.es</span>
             </div>
           </div>
-    
-          <div class="border-t border-gray-200 my-1"></div>
-    
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">
-            Settings
-          </a>
-    
-          <div class="border-t border-gray-200 my-1"></div>
-    
-          <form method="POST" action="">
-            <button (click)="logout()" type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">
-              Logout
-            </button>
-          </form>
         </div>
+
+        <div class="border-t border-gray-200 my-1"></div>
+
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">
+          Settings
+        </a>
+
+        <div class="border-t border-gray-200 my-1"></div>
+
+        <form method="POST" action="">
+          <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            role="menuitem" tabindex="-1">
+            Logout
+          </button>
+        </form>
+      </div>
     </div>
+  </div>
 </header>

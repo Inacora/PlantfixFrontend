@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { PlantService } from '../services/plant.service';
+import { PlantService } from '../../services/plants/plant.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-plant-shop',
@@ -8,7 +9,7 @@ import { PlantService } from '../services/plant.service';
   styleUrl: './plant-shop.component.css'
 })
 export class PlantShopComponent {
-  constructor(private plantService: PlantService) {}
+  constructor(private plantService: PlantService, private cartService: CartService) {}
 
   plants: any[] = [];
 
@@ -17,4 +18,8 @@ export class PlantShopComponent {
     this.plants = data as any[];
   });
   }
+
+  addToCart(plant: any) {
+  this.cartService.addToCart(plant);
+}
 }
