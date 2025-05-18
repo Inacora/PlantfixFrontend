@@ -10,18 +10,13 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Create an account
                 </h1>
-                <form [formGroup]="userForm" (ngSubmit)="createUser()">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Your name
                         </label>
                         <input type="text" name="name" id="name" formControlName="name" placeholder="John Doe" required
                             class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        @if (backendErrors['name']) {
-                        @for (error of backendErrors['name']; track error) {
-                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
-                        }
-                        }
                     </div>
 
                     <div>
@@ -31,11 +26,6 @@
                         <input type="email" name="email" id="email" formControlName="email"
                             placeholder="name@company.com" required
                             class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        @if (backendErrors['email']) {
-                        @for (error of backendErrors['email']; track error) {
-                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
-                        }
-                        }
                     </div>
 
                     <div>
@@ -45,25 +35,20 @@
                         <input type="password" name="password" id="password" formControlName="password"
                             placeholder="Enter your password" required
                             class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        @if (backendErrors['password']) {
-                        @for (error of backendErrors['password']; track error) {
-                        <div class="text-red-500 text-sm mt-1">{{ error }}</div>
-                        }
-                        }
                     </div>
 
                     <div>
-                        <label for="confirmPassword"
+                        <label for="password_confirmation"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Confirm Password
                         </label>
 
-                        <input type="password" name="confirmPassword" id="confirmPassword"
-                            formControlName="confirmPassword" placeholder="Confirm your password" required
+                        <input type="password" name="password_confirmation" id="password_confirmation"
+                            formControlName="password_confirmation" placeholder="Confirm your password" required
                             class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         @if (
-                        userForm.hasError('passwordsMismatch') &&
-                        userForm.get('confirmPassword')?.touched
+                        registerForm.hasError('passwordsMismatch') &&
+                        registerForm.get('password_confirmation')?.touched
                         ) {
                         <div class="text-red-500 text-sm mt-1">
                             Passwords do not match.
@@ -72,7 +57,7 @@
                     </div>
 
                     <div class="flex items-center justify-center">
-                        <button type="submit" [disabled]="userForm.invalid"
+                        <button type="submit" [disabled]="registerForm.invalid"
                             class="w-30 text-white bg-[#8dc98a] hover:bg-[#c4e4bf] font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
                             Register
                         </button>
@@ -83,6 +68,11 @@
                         <a href="/login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign
                             in</a>
                     </p>
+                     @if(errMessage != null){
+                    <div class="text-red-500 text-sm text-center">
+                        {{ errMessage }}
+                    </div>
+                    }
                 </form>
             </div>
         </div>

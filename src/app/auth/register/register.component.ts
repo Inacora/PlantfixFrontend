@@ -1,52 +1,60 @@
-import { UserService } from '../../services/users/user.service';
-import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpTokenService } from '../../services/token/http-token.service';
+import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
-  userForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl('')
-  });
+export class RegisterComponent implements OnInit {
+  registerForm!: FormGroup;
+  errMessage: string | null = null;
 
-  constructor(private route: ActivatedRoute, private service: UserService, private router: Router) { }
+  constructor(
+    private svc: HttpTokenService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
-  backendErrors: { [key: string]: string[] } = {};
+  ngOnInit(): void {
+    this.registerForm = this.fb.group({
+      name: [''],
+      email: [''],
+      password: [''],
+      password_confirmation: ['']
+    });
+  }
 
-  createUser() {
-      const user = {
-        name: this.userForm.get('name')?.value,
-        email: this.userForm.get('email')?.value,
-        password: this.userForm.get('password')?.value,
-        password_confirmation: this.userForm.get('confirmPassword')?.value, 
-        role: 'user',
-      };
+  onSubmit(): void {
+    this.errMessage = null;
 
-      this.service.createUser(user).subscribe({
-        next: (response) => {
-        console.log('User saved successfully', response);
-        this.backendErrors = {};
-        this.router.navigate(['/login']);
-      },
-      error: (errorResponse) => {
-        if (errorResponse.status === 422) {
-          this.backendErrors = errorResponse.error.errors;
+    const payload = this.registerForm.value;
+
+    // 1) Primero pedimos la cookie CSRF
+    this.svc.getCsrfCookie()
+      .pipe(
+        // 2) Una vez establecida, llamamos a register
+        switchMap(() => this.svc.register(payload))
+      )
+      .subscribe({
+        next: () => {
+          // Registro ok → direccionamos al home
+          this.router.navigate(['/home']);
+        },
+        error: err => {
+          // Manejo de errores igual que en login
+          const rawMessage = err.error?.message || 'An unexpected error occurred';
+          if (err.status === 422 && err.error.errors) {
+            this.errMessage = 'Invalid input. Please check all fields.';
           } else {
-            console.error('Unexpected error:', errorResponse);
+            this.errMessage = rawMessage;
           }
         }
       });
-    }
   }
-
-  
+}
