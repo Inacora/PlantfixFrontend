@@ -9,7 +9,7 @@ export const errInteInterceptor: HttpInterceptorFn = (req, next) => {
  
   return next(req).pipe(catchError ((err) => {
     if([401, 403].includes(err.status)){
-      router.navigate(['/login'])
+    
     } 
     
     const error = err.error.status || err.statusText;

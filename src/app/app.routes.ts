@@ -9,11 +9,8 @@ import { PlantShopComponent } from './plant/plant-shop/plant-shop.component';
 import { PlantDetailComponent } from './plant/plant-detail/plant-detail.component';
 import { CartComponent } from './cart/cart.component';
 
-export const routes: Routes = [{
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'login'
-}, {
+export const routes: Routes = [
+  {
     
     path: 'home', component: HomeComponent
 },{  
@@ -32,7 +29,10 @@ export const routes: Routes = [{
         return import('./plant/plant.component').then(m => m.PlantComponent)
     }
 }, { 
-    path: 'plants', component: PlantComponent 
+    path: 'plants', 
+    loadComponent: () => { 
+        return import('./plant/plant.component').then(m => m.PlantComponent)
+    } 
 }, { 
     path: 'plants/new', component: PlantFormComponent 
 }, {

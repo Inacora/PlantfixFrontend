@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class LoginComponent implements OnInit {
   errMessage!: string | null;
   loginForm!: FormGroup; 
+  user: any | null = null;
 
   constructor(
     private svc: HttpTokenService,
@@ -25,6 +26,12 @@ export class LoginComponent implements OnInit {
       email: [''],
       password: [''],
     });
+    
+    this.user= this.svc.getUser();
+      if(this.user!=null){
+      this.router.navigate(['/home']);
+
+    }
   }
 
   onSubmit() {
@@ -51,6 +58,7 @@ export class LoginComponent implements OnInit {
     }
   });
 }
+
 
 
 }

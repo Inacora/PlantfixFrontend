@@ -1,5 +1,5 @@
 import { Component, signal, OnInit, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { HeaderComponent } from "./components/shared/header/header.component";
 import { SidebarComponent } from "./components/shared/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
@@ -16,19 +16,25 @@ export class AppComponent implements OnInit {
 
   isOpen = signal(true);
 
-  user: any = null;
+  user: any | null;
 
 
   toggleSidebar() {
     this.isOpen.update(open => !open);
   }
 
-  constructor(private tokenSvc : HttpTokenService) { 
-    this.user = localStorage.getItem('user'); 
+  constructor(private tokenSvc : HttpTokenService, private router: Router) {
+    this.user = this.tokenSvc.getUser().subscribe(response => {
+    this.user = response;
+  });
   }
 
   ngOnInit(): void {
+  
     this.tokenSvc.getCsrfToken().subscribe({  
+      
   })
 }
+
+
 }

@@ -37,6 +37,7 @@ export class HttpTokenService {
   }
 
   getUser() {
+
     return this.http.get<any>(`${baseURL}/api/user`, { withCredentials: true });
   }
 }
