@@ -43,11 +43,9 @@ export class RegisterComponent implements OnInit {
       )
       .subscribe({
         next: () => {
-          // Registro ok → direccionamos al home
           this.router.navigate(['/home']);
         },
         error: err => {
-          // Manejo de errores igual que en login
           const rawMessage = err.error?.message || 'An unexpected error occurred';
           if (err.status === 422 && err.error.errors) {
             this.errMessage = 'Invalid input. Please check all fields.';

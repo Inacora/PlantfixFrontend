@@ -23,7 +23,7 @@ export class HttpTokenService {
     return this.http.post<any>(`${baseURL}/login`, {email, password}, { withCredentials: true });
   }
 
- register(data: {
+  register(data: {
     name: string;
     email: string;
     password: string;
