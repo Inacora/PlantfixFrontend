@@ -28,6 +28,7 @@ export class HttpTokenService {
     email: string;
     password: string;
     password_confirmation: string;
+    role: string;
   }) {
     return this.http.post<any>(`${baseURL}/register`, data, { withCredentials: true });
   }
@@ -38,5 +39,13 @@ export class HttpTokenService {
 
   getUser() {
     return this.http.get<any>(`${baseURL}/api/user`, { withCredentials: true });
+  }
+
+  updateUser(id: string, data: any): Observable<any> {
+    return this.http.put(`${baseURL}/api/user/${id}`, data, { withCredentials: true });
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`${baseURL}/api/user/${id}`, { withCredentials: true });
   }
 }

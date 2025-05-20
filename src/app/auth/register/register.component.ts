@@ -14,19 +14,32 @@ import { switchMap } from 'rxjs/operators';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   errMessage: string | null = null;
+  user: any | null = null;
 
   constructor(
     private svc: HttpTokenService,
     private router: Router,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       name: [''],
       email: [''],
       password: [''],
-      password_confirmation: ['']
+      password_confirmation: [''],
+      role: ['user']
+    });
+    
+    // Verificar si el usuario ya está autenticado
+    this.svc.getUser().subscribe({
+      next: (user) => {
+        this.user = user;
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        // Si no está autenticado, no hacer nada
+      }
     });
   }
 

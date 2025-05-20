@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 
@@ -8,7 +9,15 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
- placeOrder(order: any) {
-    return this.http.post('$apiUrl', order);
+ placeOrder(order: any): Observable<any> {
+     return this.http.post(this.apiUrl, order, { withCredentials: true });
+   }
+  
+  getOrders(): Observable<any> {
+    return this.http.get(this.apiUrl, { withCredentials: true });
+  }
+
+  getOrder(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`, { withCredentials: true });
   }
 }

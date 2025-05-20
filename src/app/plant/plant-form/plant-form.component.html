@@ -10,7 +10,7 @@
     <div>
       <label for="name">Name</label>
       <input id="name" formControlName="name" type="text" class="border border-gray-300 rounded p-2 w-full"
-        placeholder="Enter plant name" required />
+         required />
       @if (backendErrors['name']) {
         @for (error of backendErrors['name']; track error) {
           <div class="text-red-500 text-sm mt-1">{{ error }}</div>
@@ -21,7 +21,7 @@
     <div>
       <label for="description">Description</label>
       <textarea id="description" formControlName="description" class="border border-gray-300 rounded p-2 w-full"
-        placeholder="Enter plant description" required></textarea>
+         required></textarea>
       @if (backendErrors['description']) {
         @for (error of backendErrors['description']; track error) {
           <div class="text-red-500 text-sm mt-1">{{ error }}</div>
@@ -32,7 +32,7 @@
     <div>
       <label for="price">Price</label>
       <input id="price" formControlName="price" type="text" class="border border-gray-300 rounded p-2 w-full"
-        placeholder="Enter plant price" required />
+         required />
       @if (backendErrors['price']) {
         @for (error of backendErrors['price']; track error) {
           <div class="text-red-500 text-sm mt-1">{{ error }}</div>
@@ -43,13 +43,13 @@
     <div>
       <label for="image_url">Image URL</label>
       <input id="image_url" formControlName="image_url" type="text" class="border border-gray-300 rounded p-2 w-full"
-        placeholder="Enter plant image URL"  />
+         />
     </div>
 
     <div>
       <label for="stock">Stock</label>
       <input id="stock" formControlName="stock" type="number" class="border border-gray-300 rounded p-2 w-full"
-        placeholder="Enter plant stock" required />
+        required />
       @if (backendErrors['stock']) {
         @for (error of backendErrors['stock']; track error) {
           <div class="text-red-500 text-sm mt-1">{{ error }}</div>
