@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { CartService } from '../../../services/cart/cart.service';
-import { HttpTokenService } from '../../../services/token/http-token.service';
+import { HttpTokenService } from '../../../services/auth/http-token.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +20,7 @@ export class HeaderComponent {
 
   cartItemCount = 0;
 
-  constructor(private cartService: CartService, private tokenSvc: HttpTokenService) {
+  constructor(private cartService: CartService, private tokenSvc: HttpTokenService, private router: Router) {
     this.tokenSvc.getUser().subscribe(response => {
       this.user = response
     })
@@ -34,6 +34,17 @@ export class HeaderComponent {
 
   getInitial() {
     return this.user?.name?.charAt(0).toUpperCase() || '';
+  }
+
+ logout() {
+  this.tokenSvc.logout().subscribe({
+    next: () => {
+      this.router.navigate(['/login']);
+    },
+    error: err => {
+      console.error('Error cerrando sesión:', err);
+    }
+  });
   }
 
 }

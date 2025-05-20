@@ -4,7 +4,7 @@ import { AnimatedIconsComponent } from '../components/home/animated-icons/animat
 import { HeroTextComponent } from "../components/home/hero-text/hero-text.component";
 import { ProductItemComponent } from '../components/home/product-item/product-item.component';
 import { ContactTextComponent } from "../components/home/contact-text/contact-text.component";
-import { HttpTokenService } from '../services/token/http-token.service';
+import { HttpTokenService } from '../services/auth/http-token.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
       error: (err: any) => {
         this.errMessage = err;
       }
+      
     });
   }
 }

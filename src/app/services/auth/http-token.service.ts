@@ -20,7 +20,7 @@ export class HttpTokenService {
   }
 
   login(email: string, password: string,) {
-    return this.http.post<any>(`${baseURL}/login`, {email, password}, { withCredentials: true });
+    return this.http.post<any>(`${baseURL}/login`, { email, password }, { withCredentials: true });
   }
 
   register(data: {
@@ -32,12 +32,11 @@ export class HttpTokenService {
     return this.http.post<any>(`${baseURL}/register`, data, { withCredentials: true });
   }
 
-  logout(){
+  logout() {
     return this.http.post<any>(`${baseURL}/logout`, {}, { withCredentials: true });
   }
 
   getUser() {
-
     return this.http.get<any>(`${baseURL}/api/user`, { withCredentials: true });
   }
 }

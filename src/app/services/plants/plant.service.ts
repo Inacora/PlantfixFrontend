@@ -9,23 +9,22 @@ export class PlantService {
   constructor(private http: HttpClient) {}
 
   getPlants(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrl, { withCredentials: true });
   }
 
-  getPlant(id: string) {
-    return this.http.get(`${this.apiUrl}/${id}`);
+  getPlant(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`, { withCredentials: true });
   }
 
-  createPlant(plant: any) {
-    return this.http.post(this.apiUrl, plant);
+  createPlant(plant: any): Observable<any> {
+    return this.http.post(this.apiUrl, plant, { withCredentials: true });
   }
 
-  updatePlant(id: string, data: any) {
-    return this.http.put(`${this.apiUrl}/${id}`, data);
+  updatePlant(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, data, { withCredentials: true });
   }
 
-  deletePlant(id: string) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  deletePlant(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true });
   }
-
 }

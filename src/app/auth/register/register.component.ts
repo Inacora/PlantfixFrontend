@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpTokenService } from '../../services/token/http-token.service';
+import { HttpTokenService } from '../../services/auth/http-token.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';

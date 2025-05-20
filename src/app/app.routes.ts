@@ -8,45 +8,27 @@ import { RegisterComponent } from './auth/register/register.component';
 import { PlantShopComponent } from './plant/plant-shop/plant-shop.component';
 import { PlantDetailComponent } from './plant/plant-detail/plant-detail.component';
 import { CartComponent } from './cart/cart.component';
+import { ContactComponent } from './contact/contact.component';
+
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
-  {
-    
-    path: 'home', component: HomeComponent
-},{  
-    path: 'planttips',
-    loadComponent: () => { 
-        return import('./plant/plant-tips/plant-tips.component').then(m => m.PlantTipsComponent)
-    }
-}, {
-    path: 'contact',
-    loadComponent: () => { 
-        return import('./contact/contact.component').then(m => m.ContactComponent)
-    }
-}, {
-    path: 'plant',
-    loadComponent: () => { 
-        return import('./plant/plant.component').then(m => m.PlantComponent)
-    }
-}, { 
-    path: 'plants', 
-    loadComponent: () => { 
-        return import('./plant/plant.component').then(m => m.PlantComponent)
-    } 
-}, { 
-    path: 'plants/new', component: PlantFormComponent 
-}, {
-   path: 'plants/shop', component: PlantShopComponent
-}, {
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
-    path: 'login', component: LoginComponent
-}, {
-    path: 'register', component: RegisterComponent
-}, { 
-    path: 'plants/edit/:id', component: PlantFormComponent 
-}, {
-    path: 'plants/show/:id', component: PlantDetailComponent
-}, {
-    path: 'cart', component: CartComponent
-}
+  // Rutas protegidas
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
+  { path: 'planttips', component: PlantTipsComponent, canActivate: [authGuard] },
+  { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
+  { path: 'plant', component: PlantComponent, canActivate: [authGuard] },
+  { path: 'plants', component: PlantComponent, canActivate: [authGuard] },
+  { path: 'plants/new', component: PlantFormComponent, canActivate: [authGuard] },
+  { path: 'plants/shop', component: PlantShopComponent, canActivate: [authGuard] },
+  { path: 'plants/edit/:id', component: PlantFormComponent, canActivate: [authGuard] },
+  { path: 'plants/show/:id', component: PlantDetailComponent, canActivate: [authGuard] },
+  { path: 'cart', component: CartComponent, canActivate: [authGuard] },
+
+  { path: '**', redirectTo: 'home' }
 ];
+
+
