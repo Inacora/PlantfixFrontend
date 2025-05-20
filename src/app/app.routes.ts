@@ -9,26 +9,28 @@ import { PlantShopComponent } from './plant/plant-shop/plant-shop.component';
 import { PlantDetailComponent } from './plant/plant-detail/plant-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
 
-  // Rutas protegidas
-  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
-  { path: 'planttips', component: PlantTipsComponent, canActivate: [authGuard] },
-  { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
-  { path: 'plant', component: PlantComponent, canActivate: [authGuard] },
-  { path: 'plants', component: PlantComponent, canActivate: [authGuard] },
-  { path: 'plants/new', component: PlantFormComponent, canActivate: [authGuard] },
-  { path: 'plants/shop', component: PlantShopComponent, canActivate: [authGuard] },
-  { path: 'plants/edit/:id', component: PlantFormComponent, canActivate: [authGuard] },
-  { path: 'plants/show/:id', component: PlantDetailComponent, canActivate: [authGuard] },
-  { path: 'cart', component: CartComponent, canActivate: [authGuard] },
+    // Rutas protegidas
+    { path: 'home', component: HomeComponent, canActivate: [authGuard] },
+    { path: 'planttips', component: PlantTipsComponent, canActivate: [authGuard] },
+    { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
+    { path: 'plant', component: PlantComponent, canActivate: [authGuard] },
+    { path: 'plants', component: PlantComponent, canActivate: [authGuard] },
+    { path: 'plants/new', component: PlantFormComponent, canActivate: [authGuard] },
+    { path: 'plants/shop', component: PlantShopComponent, canActivate: [authGuard] },
+    { path: 'plants/edit/:id', component: PlantFormComponent, canActivate: [authGuard] },
+    { path: 'plants/show/:id', component: PlantDetailComponent, canActivate: [authGuard] },
+    { path: 'cart', component: CartComponent, canActivate: [authGuard] },
+    { path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
 
-  { path: '**', redirectTo: 'home' }
+    { path: '**', redirectTo: 'home' }
 ];
 
 

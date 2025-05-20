@@ -1,33 +1,28 @@
 <div class="p-30">
     <h2 class="text-xl font-bold mb-4">Your cart</h2>
 
-    @if (cartService.getCart().length === 0) {
-        <p>Your cart is empty</p>
-        <button routerLink="/plants/shop" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded">
-            Go to shop
-        </button>
+    @if (cartService.getItems().length === 0) {
+    <p>Your cart is empty</p>
+    <button routerLink="/plants/shop" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded">
+        Go to shop
+    </button>
     } @else {
-        @for (item of cartService.getCart(); track item.id) {
-            <div class="flex items-center gap-4 mb-2">
-                <span>{{ item.name }} - </span>
-                <input
-  type="number"
-  min="1"
-  [max]="item.stock"
-  [(ngModel)]="item.quantity"
-  (ngModelChange)="cartService.updateQuantity(item, item.quantity)"
-  class="w-16 border rounded px-2 py-1 text-center"
-/>
-                <span>x ${{ item.price }} = ${{ item.price * item.quantity }}</span>
-                <button (click)="cartService.removeFromCart(item)" class="ml-2 text-red-600 hover:underline">
-                    Delete
-                </button>
-            </div>
-        }
-
-        <p class="font-semibold mt-4">Total: ${{ cartService.getTotalPrice() }}</p>
-        <button (click)="placeOrder()" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded">
-            Place order
+    @for (item of cartService.getItems(); track item.id) {
+    <div class="flex items-center gap-4 mb-2">
+        <span>{{ item.name }} - </span>
+        <input type="number" min="1" [max]="item.stock" [(ngModel)]="item.quantity"
+            (ngModelChange)="cartService.updateQuantity(item, item.quantity)"
+            class="w-16 border rounded px-2 py-1 text-center" />
+        <span>x ${{ item.price }} = ${{ item.price * item.quantity }}</span>
+        <button (click)="cartService.removeFromCart(item)" class="ml-2 text-red-600 hover:underline">
+            Delete
         </button>
+    </div>
+    }
+
+    <p class="font-semibold mt-4">Total: ${{ cartService.getTotalPrice() }}</p>
+    <button (click)="goToCheckout()" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded">
+        Place order
+    </button>
     }
 </div>

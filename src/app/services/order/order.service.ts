@@ -8,7 +8,7 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
-  placeOrder(order: any) {
-    return this.http.post(this.apiUrl, order);
+ placeOrder(order: any) {
+    return this.http.post('$apiUrl', order);
   }
 }

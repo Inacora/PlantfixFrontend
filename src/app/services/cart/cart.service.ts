@@ -13,9 +13,10 @@ export class CartService {
 
   constructor() { }
 
-  getCart() {
-    return this.cart;
-  }
+  getItems() {
+  return this.cart;
+}
+
   addToCart(plant: any) {
     if (plant.stock <= 0) {
       alert("Out of stock");

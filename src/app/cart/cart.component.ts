@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CartService } from '../services/cart/cart.service';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,17 +10,10 @@ import { RouterModule } from '@angular/router';
   imports: [FormsModule, RouterModule],
 })
 export class CartComponent {
-  constructor(public cartService: CartService, private http: HttpClient) {}
+  constructor(public cartService: CartService, private http: HttpClient, private router: Router) {}
 
-  placeOrder() {
-    const order = {
-      items: this.cartService.getCart(),
-      total: this.cartService.getTotalPrice()
-    };
-
-    this.http.post('/api/orders', order).subscribe(() => {
-      alert('Pedido realizado con éxito');
-      this.cartService.clearCart();
-    });
+ 
+  goToCheckout() {
+    this.router.navigate(['/checkout']);
   }
 }

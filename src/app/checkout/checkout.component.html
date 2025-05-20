@@ -1,1 +1,47 @@
-<p>checkout works!</p>
+<div class="p-30">
+<h2>Resumen del Pedido</h2>
+
+
+   @if (cartItems.length === 0) {
+<div>
+  <p>Tu carrito está vacío.</p>
+</div>
+} @else {
+    
+    <div>
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    @for (item of cartItems; track item.id) {
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{  item.quantity}}
+    
+        </td>
+        <td>{{ item.price * item.quantity}}</td>
+    
+      </tr>
+    }
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h3>Total: {{ getTotal() }}</h3>
+
+  <button (click)="checkout()">Confirmar Pedido</button>
+
+</div>}
+
+
+</div>
+        
