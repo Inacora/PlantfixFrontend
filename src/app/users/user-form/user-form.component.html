@@ -1,0 +1,77 @@
+<div class="p-30">
+  <div class="flex items-center justify-between mt-5 mb-4 border-b-2 border-gray-300">
+    <h2 class="mb-4">{{ isEditMode ? 'Edit User' : 'Create User' }}</h2>
+    <div class="flex gap-2 mb-3">
+      <button routerLink="/plants">Cancel</button>
+    </div>
+  </div>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" type="text" class="border border-gray-300 rounded p-2 w-full"
+         required />
+      @if (backendErrors['name']) {
+        @for (error of backendErrors['name']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
+      }
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <textarea id="email" formControlName="email" class="border border-gray-300 rounded p-2 w-full"
+         required></textarea>
+      @if (backendErrors['email']) {
+        @for (error of backendErrors['email']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
+      }
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" class="border border-gray-300 rounded p-2 w-full"
+         required />
+      @if (backendErrors['password']) {
+        @for (error of backendErrors['password']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
+      }
+    </div>
+
+    <div>
+      <label for="password_confirmation">Confirm password</label>
+      <input id="password_confirmation" formControlName="password_confirmation" type="password" class="border border-gray-300 rounded p-2 w-full"
+         />
+          @if (backendErrors['password_confirmation']) {
+        @for (error of backendErrors['password_confirmation']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
+      }
+    </div>
+
+    <div>
+      <label for="role">Role</label>
+      <input id="role" formControlName="role" type="text" class="border border-gray-300 rounded p-2 w-full"
+        required />
+      @if (backendErrors['role']) {
+        @for (error of backendErrors['role']; track error) {
+          <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+        }
+      }
+    </div>
+
+    <div>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+
+      @if (isEditMode) {
+      <button type="button" (click)="deleteUser()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-4">
+        Delete
+      </button>
+      }
+    </div>
+  </form>
+</div>

@@ -8,10 +8,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { PlantShopComponent } from './plant/plant-shop/plant-shop.component';
 import { PlantDetailComponent } from './plant/plant-detail/plant-detail.component';
 import { CartComponent } from './cart/cart.component';
-import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderDetailComponent } from './order/order-detail/order-detail.component';
-
+import { UserComponent } from './users/user/user.component'; 
 import { authGuard } from './auth/auth.guard';
 import { OrderComponent } from './order/order.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -24,8 +23,6 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [authGuard] },
 
     { path: 'planttips', component: PlantTipsComponent, canActivate: [authGuard] },
-
-    { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
 
     { path: 'plant', component: PlantComponent, canActivate: [authGuard] },
     { path: 'plants', component: PlantComponent, canActivate: [authGuard] },
@@ -41,6 +38,11 @@ export const routes: Routes = [
     { path: 'orders/show/:id', component: OrderDetailComponent, canActivate: [authGuard] },
 
     { path: 'settings/:id', component: SettingsComponent, canActivate: [authGuard] },
+
+    { path: 'users', component: UserComponent, canActivate: [authGuard] },
+    { path: 'users/new', component: UserComponent, canActivate: [authGuard] },
+    { path: 'users/edit/:id', component: UserComponent, canActivate: [authGuard] },
+    { path: 'users/show/:id', component: UserComponent, canActivate: [authGuard] },
 
     { path: '**', redirectTo: 'home' }
 ];

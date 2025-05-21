@@ -7,18 +7,17 @@
   <div class="mb-10">
     <h3 class="text-lg font-medium mb-4">Profile</h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-      <label for="name">Name:
+      <label for="name">Name:</label>
       <input type="text" id="name" formControlName="name" class="p-2 w-full border rounded-md mb-2">
-      </label>
       @if (backendErrors['name']) {
         @for (error of backendErrors['name']; track error) {
           <div class="text-red-500 text-sm mt-1">{{ error }}</div>
         }
       }
     </div>
-    <label for="email">Email:
+    <label for="email">Email:</label>
     <input type="email" id="email" formControlName="email" class="p-2 w-full border rounded-md mb-2">
-    </label>
+    
     @if (backendErrors['email']) {
         @for (error of backendErrors['email']; track error) {
           <div class="text-red-500 text-sm mt-1">{{ error }}</div>
@@ -28,17 +27,15 @@
 
   <!-- Password -->
   <div class="mb-10">
-    <label for="password" class="text-lg font-medium mb-4">Password
+    <label for="password">Password</label>
     <input type="password" id="password" formControlName="password" class="p-2 w-full border rounded-md mb-2">
-    </label>
     @if (backendErrors['password']) {
         @for (error of backendErrors['password']; track error) {
           <div class="text-red-500 text-sm mt-1">{{ error }}</div>
         }
       }
-    <label for="password_confirmation" class="text-lg font-medium mb-4">Confirm password
-    <input type="password_confirmation" id="" formControlName="password_confirmation" class="p-2 w-full border rounded-md mb-2">
-    </label>
+    <label for="password_confirmation">Confirm password</label>
+    <input type="password_confirmation" id="password_confirmation" formControlName="password_confirmation" class="p-2 w-full border rounded-md mb-2">
     @if (backendErrors['password_confirmation']) {
         @for (error of backendErrors['password_confirmation']; track error) {
           <div class="text-red-500 text-sm mt-1">{{ error }}</div>

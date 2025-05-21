@@ -20,4 +20,13 @@ export class OrderService {
   getOrder(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`, { withCredentials: true });
   }
+
+  updateOrderStatus(id: string, status: string): Observable<any> {
+  return this.http.patch(`${this.apiUrl}/${id}/status`, { status }, { withCredentials: true });
+}
+
+deleteOrder(id: string): Observable<any> {
+  return this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true });
+}
+
 }

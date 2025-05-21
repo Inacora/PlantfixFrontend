@@ -42,10 +42,15 @@ export class HttpTokenService {
   }
 
   updateUser(id: string, data: any): Observable<any> {
-    return this.http.put(`${baseURL}/api/user/${id}`, data, { withCredentials: true });
+    return this.http.put(`${baseURL}/api/users/${id}`, data, { withCredentials: true });
   }
 
   deleteUser(id: string): Observable<any> {
-    return this.http.delete(`${baseURL}/api/user/${id}`, { withCredentials: true });
+    return this.http.delete(`${baseURL}/api/users/${id}`, { withCredentials: true });
   }
+
+  getUserData(): Observable<any> {
+    return this.http.get<any>(`${baseURL}/api/user`, { withCredentials: true });
+  }
+
 }

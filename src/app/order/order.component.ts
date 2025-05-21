@@ -17,6 +17,5 @@ orders: any[] = [];
   this.orderService.getOrders().subscribe(data => {
     this.orders = data as any[];
   });
-
   }
 }

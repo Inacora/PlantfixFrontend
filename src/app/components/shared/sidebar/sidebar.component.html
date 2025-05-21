@@ -33,44 +33,52 @@
         </a>
       </li>
 
+      <p class="h-16 flex items-center w-full border-t pl-4">Admin</p>
+
       <li class="hover:bg-[#c4e4bf] pl-4">
-        <a routerLink="/contact" class="h-16 px-4 flex items-center space-x-4 w-full">
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-            fill="none">
+        <a routerLink="/plants" class="h-16 px-4 flex items-center space-x-4 w-full">
+          <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#000000"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 18h12v3a1 1 0 0 1-1 1l-1 8H12l-1-8a1 1 0 0 1-1-1v-3z" />
             <path
-              d="M19.89,3.25H4.11a2,2,0,0,0-2,2v9.06a2,2,0,0,0,2,2H5.75l2.31,4a.85.85,0,0,0,1.48,0l2.32-4h8a2,2,0,0,0,2-2V5.25A2,2,0,0,0,19.89,3.25Z"
-              stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-            <line x1="5.01" y1="7.86" x2="11.01" y2="7.86" stroke="#000000" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="1.5" />
-            <line x1="5.01" y1="11.86" x2="18.01" y2="11.86" stroke="#000000" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="1.5" />
+              d="M16 2c1 1 2 5 2.5 8l3.5-3.5c1.5-1.5 2-1.5 2-1.5s.5 1.5-1 6l2.5-.2c1.5 0 2 .5 2 .5s-.5 2-6.5 5H11c-6-3-6.5-5-6.5-5s.5-.5 2-.5l2.5.2c-1.5-4.5-1-6-1-6s.5 0 2 1.5l3.5 3.5c.5-3 1.5-7 2.5-8z" />
           </svg>
-          <span *ngIf="isOpen()" class="text-sm font-medium">Contact</span>
+          <span *ngIf="isOpen()" class="text-sm font-medium">Plants</span>
         </a>
       </li>
-   
-        <p class="h-16 flex items-center w-full border-t pl-4">Admin</p>
-        <li class="hover:bg-[#c4e4bf] pl-4">
-          <a routerLink="/plants" class="h-16 px-4 flex items-center space-x-4 w-full">
-            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 18h12v3a1 1 0 0 1-1 1l-1 8H12l-1-8a1 1 0 0 1-1-1v-3z" />
-              <path d="M16 2c1 1 2 5 2.5 8l3.5-3.5c1.5-1.5 2-1.5 2-1.5s.5 1.5-1 6l2.5-.2c1.5 0 2 .5 2 .5s-.5 2-6.5 5H11c-6-3-6.5-5-6.5-5s.5-.5 2-.5l2.5.2c-1.5-4.5-1-6-1-6s.5 0 2 1.5l3.5 3.5c.5-3 1.5-7 2.5-8z" />
-            </svg>            
-            <span *ngIf="isOpen()" class="text-sm font-medium">Plants</span>
-          </a>
-        </li>
 
-        <li class="hover:bg-[#c4e4bf] pl-4">
-          <a routerLink="/orders" class="h-16 px-4 flex items-center space-x-4 w-full">
-            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 18h12v3a1 1 0 0 1-1 1l-1 8H12l-1-8a1 1 0 0 1-1-1v-3z" />
-              <path d="M16 2c1 1 2 5 2.5 8l3.5-3.5c1.5-1.5 2-1.5 2-1.5s.5 1.5-1 6l2.5-.2c1.5 0 2 .5 2 .5s-.5 2-6.5 5H11c-6-3-6.5-5-6.5-5s.5-.5 2-.5l2.5.2c-1.5-4.5-1-6-1-6s.5 0 2 1.5l3.5 3.5c.5-3 1.5-7 2.5-8z" />
-            </svg>            
-            <span *ngIf="isOpen()" class="text-sm font-medium">Orders</span>
-          </a>
-        </li>
+      <li class="hover:bg-[#c4e4bf] pl-4">
+        <a routerLink="/orders" class="h-16 px-4 flex items-center space-x-4 w-full">
+          <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#3d3d3d"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="7.5" cy="19.5" r="1.5" />
+            <circle cx="16.5" cy="19.5" r="1.5" />
+            <path d="M11 10.8L12.1429 12L15 9" />
+            <path
+              d="M2 3L2.26121 3.09184C3.5628 3.54945 4.2136 3.77826 4.58584 4.32298C4.95808 4.86771 4.95808 5.59126 4.95808 7.03836V9.76C4.95808 12.7016 5.02132 13.6723 5.88772 14.5862C6.75412 15.5 8.14857 15.5 10.9375 15.5H12M16.2404 15.5C17.8014 15.5 18.5819 15.5 19.1336 15.0504C19.6853 14.6008 19.8429 13.8364 20.158 12.3075L20.6578 9.88275C21.0049 8.14369 21.1784 7.27417 20.7345 6.69708C20.2906 6.12 18.7738 6.12 17.0888 6.12H11.0235M4.95808 6.12H7" />
+          </svg>
+          <span *ngIf="isOpen()" class="text-sm font-medium">Orders</span>
+        </a>
+      </li>
+      <li class="hover:bg-[#c4e4bf] pl-4">
+        <a routerLink="/users" class="h-16 px-4 flex items-center space-x-4 w-full">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <circle cx="12" cy="6" r="4" stroke="#0d0d0d" stroke-width="1.5"></circle>
+              <path
+                d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
+                stroke="#0d0d0d" stroke-width="1.5" stroke-linecap="round"></path>
+            </g>
+          </svg>
+          <span *ngIf="isOpen()" class="text-sm font-medium">Users</span>
+        </a>
+      </li>
     </ul>
   </div>
+
+
 
   <div class="fixed bottom-0">
     <div class="h-16 flex items-center w-full border-t">
@@ -79,9 +87,9 @@
         aria-label="Toggle sidebar">
 
         <p *ngIf="isOpen()" class="flex items-center text-center justify-center m-auto gap-2 w-64">
-          <svg class="h-5 w-5 text-[#69b85d]" style="transform: scaleX(-1);" xmlns="http://www.w3.org/2000/svg" width="24"
-            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg class="h-5 w-5 text-[#69b85d]" style="transform: scaleX(-1);" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
             <polyline points="16 17 21 12 16 7"></polyline>
             <line x1="21" y1="12" x2="9" y2="12"></line>
