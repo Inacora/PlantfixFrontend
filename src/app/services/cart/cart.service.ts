@@ -10,7 +10,6 @@ export class CartService {
 
   cartCount$ = this.cartCount.asObservable();
 
-
   constructor() { }
 
   getItems() {
