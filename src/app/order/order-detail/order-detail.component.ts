@@ -3,10 +3,13 @@ import { RouterModule } from '@angular/router';
 import { OrderService } from '../../services/order/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { UpdateButtonComponent } from "../../components/buttons/update-button/update-button.component";
+import { DeleteButtonComponent } from "../../components/buttons/delete-button/delete-button.component";
+import { CancelButtonComponent } from '../../components/buttons/cancel-button/cancel-button.component';
 
 @Component({
   selector: 'app-order-detail',
-  imports: [RouterModule, FormsModule],
+  imports: [RouterModule, FormsModule, UpdateButtonComponent, DeleteButtonComponent, CancelButtonComponent],
   templateUrl: './order-detail.component.html',
   styleUrl: './order-detail.component.css'
 })

@@ -14,6 +14,7 @@ import { UserComponent } from './users/user/user.component';
 import { authGuard } from './auth/auth.guard';
 import { OrderComponent } from './order/order.component';
 import { SettingsComponent } from './settings/settings.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -40,9 +41,8 @@ export const routes: Routes = [
     { path: 'settings/:id', component: SettingsComponent, canActivate: [authGuard] },
 
     { path: 'users', component: UserComponent, canActivate: [authGuard] },
-    { path: 'users/new', component: UserComponent, canActivate: [authGuard] },
-    { path: 'users/edit/:id', component: UserComponent, canActivate: [authGuard] },
-    { path: 'users/show/:id', component: UserComponent, canActivate: [authGuard] },
+    { path: 'users/new', component: UserFormComponent, canActivate: [authGuard] },
+    { path: 'users/edit/:id', component: UserFormComponent, canActivate: [authGuard] },
 
     { path: '**', redirectTo: 'home' }
 ];

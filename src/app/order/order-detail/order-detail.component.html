@@ -1,55 +1,61 @@
-<div class="space-y-6 p-30">
-    <div class="flex items-start justify-between border-b pb-6">
-        <div class="flex items-start gap-4">
-            <div class="w-[16vw]">
-                <h3 class="text-md font-medium text-gray-900">User: {{ order.user_id }}</h3>
-                <p class="text-sm text-gray-500">Date: {{ order.order_date }}</p>
-                <p class="text-sm text-gray-500">Address: {{ order.adress }}</p>
-                <p class="text-sm text-gray-500">City: {{ order.city }}</p>
-                <p class="text-sm text-gray-500">Country: {{ order.country }}</p>
-                <p class="text-sm text-gray-500">Phone number: {{ order.phone_number }}</p>
-
-                <p class="text-sm text-gray-500 font-semibold">Total: ${{ order.total_price}}</p>
-                <div class="text-sm text-gray-500">
-                    <label for="status">Status:</label>
-                    <select [(ngModel)]="order.status" name="status" class="ml-2 border rounded px-2 py-1">
-                        <option value="pending">Pending</option>
-                        <option value="processing">Processing</option>
-                        <option value="shipped">Shipped</option>
-                        <option value="delivered">Delivered</option>
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-                    <button (click)="updateStatus()"
-                        class="ml-4 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
-                        Update Status
-                    </button>
-                </div>
-            </div>
+<div class="p-45">
+    <div class="flex items-center justify-between">
+        <h2 class="mb-4">Order: {{ order.id }}</h2>
+        <div class="flex gap-4 mb-3">
+            <app-cancel-button routerLink="/plants" />
         </div>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Plant Name</th>
-                <th>Quantity</th>
-                <th>Price per unit</th>
-            </tr>
-        </thead>
-        @for (plant of order.plants; track plant.id) {
-        <tbody>
-            <tr>
-                <td>{{ plant.name }}</td>
-                <td>{{ plant.pivot.quantity }}</td>
-                <td>{{ plant.pivot.price }}</td>
-            </tr>
-        </tbody>
-        }
-    </table>
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-20">
+        <div class="flex items-start justify-between sm:border-b lg:border-none pb-6">
+            <div class="flex items-start gap-4">
+                <div class="w-[16vw]">
+                    <h1 class="text-2xl font-bold text-green-800 mb-2 pb-4">Contact information</h1>
+                    <p class="text-md font-medium text-gray-900">User: {{ order.user_id }}</p>
+                    <p class="text-sm text-gray-500">Date: {{ order.order_date }}</p>
+                    <p class="text-sm text-gray-500">Address: {{ order.adress }}</p>
+                    <p class="text-sm text-gray-500">City: {{ order.city }}</p>
+                    <p class="text-sm text-gray-500">Country: {{ order.country }}</p>
+                    <p class="text-sm text-gray-500">Phone number: {{ order.phone_number }}</p>
 
-    <button 
-  (click)="deleteOrder()" 
-  class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
->
-  Delete Order
-</button>
+                    <p class="text-sm text-gray-500 font-semibold">Total: ${{ order.total_price}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h1 class="text-2xl font-bold text-green-800 mb-2 pb-4">Order</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plant Name</th>
+                        <th>Quantity</th>
+                        <th>Price per unit</th>
+                    </tr>
+                </thead>
+                @for (plant of order.plants; track plant.id) {
+                <tbody>
+                    <tr>
+                        <td>{{ plant.name }}</td>
+                        <td>{{ plant.pivot.quantity }}</td>
+                        <td>{{ plant.pivot.price }}</td>
+                    </tr>
+                </tbody>
+                }
+            </table>
+
+            <div class="text-sm text-gray-500">
+                <label for="status">Status:</label>
+                <select [(ngModel)]="order.status" name="status" class="ml-2 border rounded px-2 py-1">
+                    <option value="pending">Pending</option>
+                    <option value="processing">Processing</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <app-update-button (click)="updateStatus()" />
+            </div>
+            <app-delete-button (click)="deleteOrder()" />
+        </div>
+    </div>
+</div>

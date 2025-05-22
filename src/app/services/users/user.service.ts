@@ -9,7 +9,7 @@ export class UserService {
 
   private apiUrl = 'http://localhost:8000/api/users';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getUsers(): Observable<any> {
     return this.http.get(this.apiUrl, { withCredentials: true });

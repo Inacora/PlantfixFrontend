@@ -1,4 +1,4 @@
-<div class="bg-[#f8f5ef] text-gray-800 min-h-screen pt-30 pb-20 p-40">
+<div class="text-gray-800 min-h-screen pt-30 pb-20 p-40">
   <div class="container mx-auto">
     <!-- Encabezado -->
     <div class="flex justify-between items-center mb-4">
@@ -14,9 +14,9 @@
     </div>
 
     <!-- Grid de productos -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       @for (plant of plants; track plant.id) {
-      <div class="bg-white rounded-md shadow p-4 flex flex-col">
+      <div class=" bg-[#fbf9f5] rounded-md shadow p-4 flex flex-col">
         <div class="relative">
           <img [src]="plant.image_url" [alt]="plant.name" class="mb-4 rounded w-full h-70 object-cover">
 
@@ -31,18 +31,20 @@
         <p class="text-sm text-gray-600 mb-1">{{ plant.description }}</p>
         <p class="text-sm text-gray-500">Family: {{ plant.plant_family.name }}</p>
         <p class="text-sm text-gray-600">Stock: {{ plant.stock }}</p>
-        <p class="text-lg font-bold mt-2">${{ plant.price }}</p>
 
-        @if(plant.stock > 0){
-        <button (click)="addToCart(plant)" class="mt-auto bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-          Add to cart
-        </button>}
-        @else{
-        <button class="mt-auto px-4 py-2 rounded">
-          Out of stock
-        </button>
-        }
+        <div class="flex items-center justify-between px-2">
+          <p class="text-lg font-bold mt-2">${{ plant.price }}</p>
 
+          @if(plant.stock > 0){
+          @if(!isAdded(plant)){
+          <app-add-to-cart-button (click)="addToCart(plant)"></app-add-to-cart-button>
+          }@else{
+          <app-added-to-cart-button></app-added-to-cart-button>
+          }
+          }@else{
+          <app-out-of-stock-button></app-out-of-stock-button>
+          }
+        </div>
       </div>
       }
     </div>

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { OrderService } from '../services/order/order.service';
 import { RouterModule } from '@angular/router';
+import { EditButtonComponent } from '../components/buttons/edit-button/edit-button.component';
+import { SearchInputComponent } from "../components/inputs/search-input/search-input.component";
 
 @Component({
   selector: 'app-order',
-  imports: [RouterModule],
+  imports: [RouterModule, EditButtonComponent, SearchInputComponent],
   templateUrl: './order.component.html',
   styleUrl: './order.component.css'
 })

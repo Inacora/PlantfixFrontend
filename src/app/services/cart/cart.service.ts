@@ -16,24 +16,28 @@ export class CartService {
   return this.cart;
 }
 
-  addToCart(plant: any) {
-    if (plant.stock <= 0) {
-      alert("Out of stock");
-      return;
-    }
-    const found = this.cart.find(p => p.id === plant.id);
-    if (found) {
-      if (found.quantity < found.stock) {
-        found.quantity++;
-        this.updateCartCount();
-      } else {
-        alert("You cannot add more than the available quantity in stock");
-      }
-    } else {
-      this.cart.push({ ...plant, quantity: 1 });
-      this.updateCartCount();
-    }
+  addToCart(plant: any): boolean {
+  if (plant.stock <= 0) {
+    alert("Out of stock");
+    return false;  // No añadido
   }
+  const found = this.cart.find(p => p.id === plant.id);
+  if (found) {
+    if (found.quantity < found.stock) {
+      found.quantity++;
+      this.updateCartCount();
+      return true;  // Añadido correctamente
+    } else {
+      alert("You cannot add more than the available quantity in stock");
+      return false; // No añadido
+    }
+  } else {
+    this.cart.push({ ...plant, quantity: 1 });
+    this.updateCartCount();
+    return true;    // Añadido correctamente
+  }
+}
+
 
   clearCart() {
     this.cart = [];
