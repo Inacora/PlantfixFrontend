@@ -3,13 +3,13 @@ import { HeroComponent } from "../components/home/hero/hero.component";
 import { AnimatedIconsComponent } from '../components/home/animated-icons/animated-icons.component';
 import { HeroTextComponent } from "../components/home/hero-text/hero-text.component";
 import { ProductItemComponent } from '../components/home/product-item/product-item.component';
-import { ContactTextComponent } from "../components/home/contact-text/contact-text.component";
 import { HttpTokenService } from '../services/auth/http-token.service';
 import { Router } from '@angular/router';
+import { PlantTipsTextComponent } from "../components/home/plant-tips-text/plant-tips-text.component";
 
 @Component({
   selector: 'app-home',
-  imports: [HeroComponent, AnimatedIconsComponent, HeroTextComponent, ProductItemComponent, ContactTextComponent],
+  imports: [HeroComponent, AnimatedIconsComponent, HeroTextComponent, ProductItemComponent, PlantTipsTextComponent],
   templateUrl: './home.component.html',
   styleUrls: []
 })

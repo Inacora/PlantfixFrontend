@@ -2,14 +2,14 @@
   <div class="flex items-center justify-between mt-5 mb-4 border-b-2 border-gray-300">
     <h2 class="mb-4">{{ isEditMode ? 'Edit Plant' : 'Create Plant' }}</h2>
     <div class="flex gap-2 mb-3">
-      <button routerLink="/plants">Cancel</button>
+      <app-cancel-button routerLink="/plants" />
     </div>
   </div>
 
   <form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
-    <div>
+    <div class="m-2">
       <label for="name">Name</label>
-      <input id="name" formControlName="name" type="text" class="border border-gray-300 rounded p-2 w-full"
+      <input id="name" formControlName="name" type="text" class="border border-gray-300 rounded p-2 mt-2 w-full"
          required />
       @if (backendErrors['name']) {
         @for (error of backendErrors['name']; track error) {
@@ -18,9 +18,9 @@
       }
     </div>
 
-    <div>
+    <div class="m-2">
       <label for="description">Description</label>
-      <textarea id="description" formControlName="description" class="border border-gray-300 rounded p-2 w-full"
+      <textarea id="description" formControlName="description" class="border border-gray-300 rounded p-2 mt-2 w-full"
          required></textarea>
       @if (backendErrors['description']) {
         @for (error of backendErrors['description']; track error) {
@@ -29,9 +29,9 @@
       }
     </div>
 
-    <div>
+    <div class="m-2">
       <label for="price">Price</label>
-      <input id="price" formControlName="price" type="text" class="border border-gray-300 rounded p-2 w-full"
+      <input id="price" formControlName="price" type="text" class="border border-gray-300 rounded p-2 mt-2 w-full"
          required />
       @if (backendErrors['price']) {
         @for (error of backendErrors['price']; track error) {
@@ -40,15 +40,15 @@
       }
     </div>
 
-    <div>
+    <div class="m-2">
       <label for="image_url">Image URL</label>
-      <input id="image_url" formControlName="image_url" type="text" class="border border-gray-300 rounded p-2 w-full"
+      <input id="image_url" formControlName="image_url" type="text" class="border border-gray-300 rounded p-2 mt-2 w-full"
          />
     </div>
 
-    <div>
+    <div class="m-2">
       <label for="stock">Stock</label>
-      <input id="stock" formControlName="stock" type="number" class="border border-gray-300 rounded p-2 w-full"
+      <input id="stock" formControlName="stock" type="number" class="border border-gray-300 rounded p-2 mt-2 w-full"
         required />
       @if (backendErrors['stock']) {
         @for (error of backendErrors['stock']; track error) {
@@ -57,7 +57,7 @@
       }
     </div>
 
-    <div>
+    <div class="m-2">
       <label for="plant_family_id">Family</label>
       <select id="plant_family_id" formControlName="plant_family_id" class="border border-gray-300 rounded p-2 w-full" required>
         @for (family of uniquePlantFamilies; track family.id) {
@@ -71,15 +71,18 @@
       }
     </div>    
 
-    <div>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4">
-        {{ isEditMode ? 'Update' : 'Create' }}
-      </button>
+   <div class="mt-4 flex justify-center gap-4">
+      <div>
+        @if (isEditMode) {
+        <app-update-button />
+        } @else {
+        <app-create-button />
+        }
+      </div>
+
 
       @if (isEditMode) {
-      <button type="button" (click)="deletePlant()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-4">
-        Delete
-      </button>
+      <app-delete-button (click)="deletePlant()" />
       }
     </div>
   </form>

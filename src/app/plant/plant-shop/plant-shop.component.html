@@ -14,11 +14,11 @@
     </div>
 
     <!-- Grid de productos -->
-    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:w-350 md:w-150 sm:w-80">
       @for (plant of plants; track plant.id) {
       <div class=" bg-[#fbf9f5] rounded-md shadow p-4 flex flex-col">
         <div class="relative">
-          <img [src]="plant.image_url" [alt]="plant.name" class="mb-4 rounded w-full h-70 object-cover">
+          <img [src]="plant.image_url" [alt]="plant.name" class="mb-4 rounded w-full h-65 object-cover">
 
           @if (plant.stock >= 1 && plant.stock < 5) { <span
             class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">
@@ -27,13 +27,13 @@
             }
         </div>
 
-        <h3 class="font-semibold text-lg">{{ plant.name }}</h3>
-        <p class="text-sm text-gray-600 mb-1">{{ plant.description }}</p>
-        <p class="text-sm text-gray-500">Family: {{ plant.plant_family.name }}</p>
-        <p class="text-sm text-gray-600">Stock: {{ plant.stock }}</p>
+        <h3 class="font-semibold text-lg mb-2">{{ plant.name }}</h3>
+        <p class="text-sm text-gray-600 mb-2">{{ plant.description }}</p>
+        <p class="text-sm text-gray-500 mb-2">Family: {{ plant.plant_family.name }}</p>
+        <p class="text-sm text-gray-600 mb-2">Stock: {{ plant.stock }}</p>
 
         <div class="flex items-center justify-between px-2">
-          <p class="text-lg font-bold mt-2">${{ plant.price }}</p>
+          <p class="text-lg font-bold">${{ plant.price }}</p>
 
           @if(plant.stock > 0){
           @if(!isAdded(plant)){

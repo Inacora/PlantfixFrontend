@@ -4,10 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PlantService } from '../../services/plants/plant.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DeleteButtonComponent } from "../../components/buttons/delete-button/delete-button.component";
+import { CreateButtonComponent } from "../../components/buttons/create-button/create-button.component";
+import { UpdateButtonComponent } from "../../components/buttons/update-button/update-button.component";
+import { CancelButtonComponent } from "../../components/buttons/cancel-button/cancel-button.component";
 
 @Component({
   selector: 'app-plant-form',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, DeleteButtonComponent, CreateButtonComponent, UpdateButtonComponent, CancelButtonComponent],
   templateUrl: './plant-form.component.html',
   styleUrl: './plant-form.component.css'
 })

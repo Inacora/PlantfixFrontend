@@ -2,8 +2,8 @@
   <!-- Navigation Links -->
   <div class="flex items-start mt-[10vh]">
     <ul class="flex-1">
-      <li class="hover:bg-[#c4e4bf] pl-4">
-        <a routerLink="/" class="h-16 px-4 flex items-center space-x-4 w-full">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500 pl-4">
+        <a routerLink="/home" class="h-16 px-4 flex items-center space-x-4 w-full">
           <svg class="h-8 w-8 text-[#69b85d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.91"
             stroke-linecap="round" stroke-linejoin="round">
             <path
@@ -13,9 +13,9 @@
         </a>
       </li>
 
-      <li class="hover:bg-[#c4e4bf] pl-4">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500 pl-4">
         <a routerLink="/plants/shop" class="h-16 px-4 flex items-center space-x-4 w-full">
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.91">
+          <svg class="h-6 w-6 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.91">
             <path d="M3.41,7.23H20.59v12a3.23,3.23,0,0,1-3.23,3.23H6.64A3.23,3.23,0,0,1,3.41,19.23Z" />
             <path d="M8.18,10.09V5.32A3.82,3.82,0,0,1,12,1.5a3.82,3.82,0,0,1,3.82,3.82v4.77" />
           </svg>
@@ -23,9 +23,9 @@
         </a>
       </li>
 
-      <li class="hover:bg-[#c4e4bf] pl-4">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500 pl-4">
         <a routerLink="/planttips" class="h-16 px-4 flex items-center space-x-4 w-full">
-          <svg class="h-6 w-7" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+          <svg class="h-6 w-7 text-gray-500" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M12 2.5c-3.81 0-6.5 2.743-6.5 6.119 0 1.536.632 2.572 1.425 3.56.172.215.347.422.527.635l.096.112c.21.25.427.508.63.774.404.531.783 1.128.995 1.834a.75.75 0 01-1.436.432c-.138-.46-.397-.89-.753-1.357a18.354 18.354 0 00-.582-.714l-.092-.11c-.18-.212-.37-.436-.555-.667C4.87 12.016 4 10.651 4 8.618 4 4.363 7.415 1 12 1s8 3.362 8 7.619c0 2.032-.87 3.397-1.755 4.5-.185.23-.375.454-.555.667l-.092.109c-.21.248-.405.481-.582.714-.356.467-.615.898-.753 1.357a.75.75 0 01-1.437-.432c.213-.706.592-1.303.997-1.834.202-.266.419-.524.63-.774l.095-.112c.18-.213.355-.42.527-.634.793-.99 1.425-2.025 1.425-3.561C18.5 5.243 15.81 2.5 12 2.5zM9.5 21.75a.75.75 0 01.75-.75h3.5a.75.75 0 010 1.5h-3.5a.75.75 0 01-.75-.75zM8.75 18a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" />
           </svg>
@@ -33,11 +33,11 @@
         </a>
       </li>
 
-      <p class="h-16 flex items-center w-full border-t pl-4">Admin</p>
+      <p class="h-16 flex items-center w-full border-t border-gray-500 pl-4 text-gray-500">Admin</p>
 
-      <li class="hover:bg-[#c4e4bf] pl-4">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500 pl-4">
         <a routerLink="/plants" class="h-16 px-4 flex items-center space-x-4 w-full">
-          <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#000000"
+          <svg class="h-8 w-8 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#000000"
             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10 18h12v3a1 1 0 0 1-1 1l-1 8H12l-1-8a1 1 0 0 1-1-1v-3z" />
             <path
@@ -47,9 +47,9 @@
         </a>
       </li>
 
-      <li class="hover:bg-[#c4e4bf] pl-4">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500 pl-4">
         <a routerLink="/orders" class="h-16 px-4 flex items-center space-x-4 w-full">
-          <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#3d3d3d"
+          <svg class="h-8 w-8 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#3d3d3d"
             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="7.5" cy="19.5" r="1.5" />
             <circle cx="16.5" cy="19.5" r="1.5" />
@@ -60,9 +60,9 @@
           <span *ngIf="isOpen()" class="text-sm font-medium">Orders</span>
         </a>
       </li>
-      <li class="hover:bg-[#c4e4bf] pl-4">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500 pl-4">
         <a routerLink="/users" class="h-16 px-4 flex items-center space-x-4 w-full">
-          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="h-7 w-7 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
@@ -81,9 +81,9 @@
 
 
   <div class="fixed bottom-0">
-    <div class="h-16 flex items-center w-full border-t">
+    <div class="h-16 flex items-center w-full border-t border-gray-500">
       <button (click)="toggleSidebar()"
-        class="h-16 w-full flex justify-center items-center hover:bg-[#c4e4bf] focus:outline-none"
+        class="h-16 w-full flex justify-center items-center hover:bg-[#C8E6C9] focus:outline-none"
         aria-label="Toggle sidebar">
 
         <p *ngIf="isOpen()" class="flex items-center text-center justify-center m-auto gap-2 w-64">
@@ -97,7 +97,7 @@
           Collapsed view
         </p>
 
-        <svg *ngIf="!isOpen()" class="h-5 w-20 text-[#69b85d]" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        <svg *ngIf="!isOpen()" class="h-5 w-20 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round">
           <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>

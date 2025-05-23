@@ -4,10 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/users/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DeleteButtonComponent } from "../../components/buttons/delete-button/delete-button.component";
+import { UpdateButtonComponent } from "../../components/buttons/update-button/update-button.component";
+import { CreateButtonComponent } from "../../components/buttons/create-button/create-button.component";
+import { CancelButtonComponent } from '../../components/buttons/cancel-button/cancel-button.component';
 
 @Component({
   selector: 'app-user-form',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, DeleteButtonComponent, CancelButtonComponent, UpdateButtonComponent, CreateButtonComponent],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
