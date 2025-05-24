@@ -57,7 +57,7 @@ export class CheckoutComponent {
     };
 
     this.orderService.placeOrder(order).subscribe(() => {
-      alert('Pedido realizado con éxito');
+      alert('Order completed successfully');
       this.cartService.clearCart();
     });
   }

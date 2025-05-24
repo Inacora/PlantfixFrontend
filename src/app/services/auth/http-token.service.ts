@@ -48,9 +48,4 @@ export class HttpTokenService {
   deleteUser(id: string): Observable<any> {
     return this.http.delete(`${baseURL}/api/users/${id}`, { withCredentials: true });
   }
-
-  getUserData(): Observable<any> {
-    return this.http.get<any>(`${baseURL}/api/user`, { withCredentials: true });
-  }
-
 }

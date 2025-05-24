@@ -8,16 +8,23 @@ export const authGuard: CanActivateFn = (route, state) => {
   const tokenSvc = inject(HttpTokenService);
   const router = inject(Router);
 
+  const requiredRole = route.data?.['role']; 
+
   return tokenSvc.getCsrfToken().pipe(
     switchMap(() => 
       tokenSvc.getUser().pipe(
         map(user => {
-          if (user) {
-            return true;
-          } else {
+          if (!user) {
             router.navigate(['/login']);
             return false;
           }
+
+          if (requiredRole && user.role !== requiredRole) {
+            router.navigate(['/unauthorized']); 
+            return false;
+          }
+
+          return true;
         }),
         catchError(() => {
           router.navigate(['/login']);

@@ -40,30 +40,42 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const { email, password } = this.loginForm.value;
+  const { email, password } = this.loginForm.value;
 
-    this.svc.getCsrfCookie().subscribe({
-      next: () => {
-        this.svc.login(email, password).subscribe({
-          next: () => {
-            this.router.navigate(['/home']);
-          },
-          error: (err) => {
-            const rawMessage = err.error.message || 'An unexpected error occurred';
-            if (err.status === 422 && err.error.errors) {
-              this.errMessage = 'Invalid email or password';
-            } else {
-              this.errMessage = rawMessage;
+  this.svc.getCsrfCookie().subscribe({
+    next: () => {
+      this.svc.login(email, password).subscribe({
+        next: () => {
+          // Después del login, obtiene los datos del usuario
+          this.svc.getUser().subscribe({
+            next: (user) => {
+              // Aquí puedes guardar los datos del usuario
+              this.user = user;
+
+              // Si quieres, guarda el rol en sessionStorage
+              sessionStorage.setItem('role', user.role); // 🔐 o en un servicio
+              
+              this.router.navigate(['/home']);
+            },
+            error: () => {
+              this.errMessage = 'No se pudo obtener la información del usuario';
             }
+          });
+        },
+        error: (err) => {
+          const rawMessage = err?.error?.message || 'An unexpected error occurred';
+          if (err?.status === 422 && err?.error?.errors) {
+            this.errMessage = 'Invalid email or password';
+          } else {
+            this.errMessage = rawMessage;
           }
-        });
-      },
-      error: () => {
-        this.errMessage = 'No se pudo obtener el token CSRF';
-      }
-    });
-  }
-
-
+        }
+      });
+    },
+    error: () => {
+      this.errMessage = 'No se pudo obtener el token CSRF';
+    }
+  });
+}
 
 }

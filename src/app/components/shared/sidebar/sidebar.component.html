@@ -1,22 +1,27 @@
-<aside class="flex flex-col bg-[#f7f9f2] border-r border-gray-200 border-opacity-5 text-gray-700 shadow h-screen" [ngClass]="isOpen() ? 'w-64' : 'w-20'">
+<aside class="flex flex-col bg-[#f7f9f2] border-r border-gray-200 border-opacity-5 text-gray-700 shadow h-screen"
+  [ngClass]="isOpen() ? 'w-64' : 'w-20'">
   <!-- Navigation Links -->
   <div class="flex items-start mt-[8vh]">
     <ul class="flex-1">
-      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }"
+        class="hover:bg-[#C8E6C9] text-gray-500">
         <a routerLink="/home" class="h-16 px-4 flex items-center w-full"
-           [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
-           [attr.title]="!isOpen() ? 'Home' : null">
-          <svg class="h-8 w-8 text-[#69b85d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.91" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 20H7C5.89543 20 5 19.1046 5 18V10.9199C5 10.336 5.25513 9.78132 5.69842 9.40136L10.6984 5.11564C11.4474 4.47366 12.5526 4.47366 13.3016 5.11564L18.3016 9.40136C18.7449 9.78132 19 10.336 19 10.9199V18C19 19.1046 18.1046 20 17 20H15M9 20V14C9 13.4477 9.44772 13 10 13H14C14.5523 13 15 13.4477 15 14V20M9 20H15" />
+          [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
+          [attr.title]="!isOpen() ? 'Home' : null">
+          <svg class="h-8 w-8 text-[#69b85d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.91"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 20H7C5.89543 20 5 19.1046 5 18V10.9199C5 10.336 5.25513 9.78132 5.69842 9.40136L10.6984 5.11564C11.4474 4.47366 12.5526 4.47366 13.3016 5.11564L18.3016 9.40136C18.7449 9.78132 19 10.336 19 10.9199V18C19 19.1046 18.1046 20 17 20H15M9 20V14C9 13.4477 9.44772 13 10 13H14C14.5523 13 15 13.4477 15 14V20M9 20H15" />
           </svg>
           <span *ngIf="isOpen()" class="text-sm font-medium">Home</span>
         </a>
       </li>
 
-      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }"
+        class="hover:bg-[#C8E6C9] text-gray-500">
         <a routerLink="/plants/shop" class="h-16 px-4 flex items-center w-full"
-           [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
-           [attr.title]="!isOpen() ? 'Shop' : null">
+          [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
+          [attr.title]="!isOpen() ? 'Shop' : null">
           <svg class="h-6 w-6 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.91">
             <path d="M3.41,7.23H20.59v12a3.23,3.23,0,0,1-3.23,3.23H6.64A3.23,3.23,0,0,1,3.41,19.23Z" />
             <path d="M8.18,10.09V5.32A3.82,3.82,0,0,1,12,1.5a3.82,3.82,0,0,1,3.82,3.82v4.77" />
@@ -25,58 +30,73 @@
         </a>
       </li>
 
-      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }"
+        class="hover:bg-[#C8E6C9] text-gray-500">
         <a routerLink="/planttips" class="h-16 px-4 flex items-center w-full"
-           [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
-           [attr.title]="!isOpen() ? 'Plant tips' : null">
+          [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
+          [attr.title]="!isOpen() ? 'Plant tips' : null">
           <svg class="h-6 w-7 text-gray-500" viewBox="0 0 24 24" fill="#000000">
-            <path d="M12 2.5c-3.81 0-6.5 2.743-6.5 6.119 0 1.536.632 2.572 1.425 3.56.172.215.347.422.527.635l.096.112c.21.25.427.508.63.774.404.531.783 1.128.995 1.834a.75.75 0 01-1.436.432c-.138-.46-.397-.89-.753-1.357a18.354 18.354 0 00-.582-.714l-.092-.11c-.18-.212-.37-.436-.555-.667C4.87 12.016 4 10.651 4 8.618 4 4.363 7.415 1 12 1s8 3.362 8 7.619c0 2.032-.87 3.397-1.755 4.5-.185.23-.375.454-.555.667l-.092.109c-.21.248-.405.481-.582.714-.356.467-.615.898-.753 1.357a.75.75 0 01-1.437-.432c.213-.706.592-1.303.997-1.834.202-.266.419-.524.63-.774l.095-.112c.18-.213.355-.42.527-.634.793-.99 1.425-2.025 1.425-3.561C18.5 5.243 15.81 2.5 12 2.5zM9.5 21.75a.75.75 0 01.75-.75h3.5a.75.75 0 010 1.5h-3.5a.75.75 0 01-.75-.75zM8.75 18a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" />
+            <path
+              d="M12 2.5c-3.81 0-6.5 2.743-6.5 6.119 0 1.536.632 2.572 1.425 3.56.172.215.347.422.527.635l.096.112c.21.25.427.508.63.774.404.531.783 1.128.995 1.834a.75.75 0 01-1.436.432c-.138-.46-.397-.89-.753-1.357a18.354 18.354 0 00-.582-.714l-.092-.11c-.18-.212-.37-.436-.555-.667C4.87 12.016 4 10.651 4 8.618 4 4.363 7.415 1 12 1s8 3.362 8 7.619c0 2.032-.87 3.397-1.755 4.5-.185.23-.375.454-.555.667l-.092.109c-.21.248-.405.481-.582.714-.356.467-.615.898-.753 1.357a.75.75 0 01-1.437-.432c.213-.706.592-1.303.997-1.834.202-.266.419-.524.63-.774l.095-.112c.18-.213.355-.42.527-.634.793-.99 1.425-2.025 1.425-3.561C18.5 5.243 15.81 2.5 12 2.5zM9.5 21.75a.75.75 0 01.75-.75h3.5a.75.75 0 010 1.5h-3.5a.75.75 0 01-.75-.75zM8.75 18a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" />
           </svg>
           <span *ngIf="isOpen()" class="text-sm font-medium">Plant tips</span>
         </a>
       </li>
 
+      @if (user?.role === 'admin') {
+
       <p class="h-16 flex items-center w-full border-t border-gray-500 pl-4 text-gray-500" *ngIf="isOpen()">Admin</p>
 
-      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }"
+        class="hover:bg-[#C8E6C9] text-gray-500">
         <a routerLink="/plants" class="h-16 px-4 flex items-center w-full"
-           [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
-           [attr.title]="!isOpen() ? 'Plants' : null">
-          <svg class="h-8 w-8 text-gray-500" viewBox="0 0 32 32" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
+          [attr.title]="!isOpen() ? 'Plants' : null">
+          <svg class="h-8 w-8 text-gray-500" viewBox="0 0 32 32" fill="none" stroke="#000000" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M10 18h12v3a1 1 0 0 1-1 1l-1 8H12l-1-8a1 1 0 0 1-1-1v-3z" />
-            <path d="M16 2c1 1 2 5 2.5 8l3.5-3.5c1.5-1.5 2-1.5 2-1.5s.5 1.5-1 6l2.5-.2c1.5 0 2 .5 2 .5s-.5 2-6.5 5H11c-6-3-6.5-5-6.5-5s.5-.5 2-.5l2.5.2c-1.5-4.5-1-6-1-6s.5 0 2 1.5l3.5 3.5c.5-3 1.5-7 2.5-8z" />
+            <path
+              d="M16 2c1 1 2 5 2.5 8l3.5-3.5c1.5-1.5 2-1.5 2-1.5s.5 1.5-1 6l2.5-.2c1.5 0 2 .5 2 .5s-.5 2-6.5 5H11c-6-3-6.5-5-6.5-5s.5-.5 2-.5l2.5.2c-1.5-4.5-1-6-1-6s.5 0 2 1.5l3.5 3.5c.5-3 1.5-7 2.5-8z" />
           </svg>
           <span *ngIf="isOpen()" class="text-sm font-medium">Plants</span>
         </a>
       </li>
 
-      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }"
+        class="hover:bg-[#C8E6C9] text-gray-500">
         <a routerLink="/orders" class="h-16 px-4 flex items-center w-full"
-           [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
-           [attr.title]="!isOpen() ? 'Orders' : null">
-          <svg class="h-8 w-8 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="#3d3d3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
+          [attr.title]="!isOpen() ? 'Orders' : null">
+          <svg class="h-8 w-8 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="#3d3d3d" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
             <circle cx="7.5" cy="19.5" r="1.5" />
             <circle cx="16.5" cy="19.5" r="1.5" />
             <path d="M11 10.8L12.1429 12L15 9" />
-            <path d="M2 3L2.26121 3.09184C3.5628 3.54945 4.2136 3.77826 4.58584 4.32298C4.95808 4.86771 4.95808 5.59126 4.95808 7.03836V9.76C4.95808 12.7016 5.02132 13.6723 5.88772 14.5862C6.75412 15.5 8.14857 15.5 10.9375 15.5H12M16.2404 15.5C17.8014 15.5 18.5819 15.5 19.1336 15.0504C19.6853 14.6008 19.8429 13.8364 20.158 12.3075L20.6578 9.88275C21.0049 8.14369 21.1784 7.27417 20.7345 6.69708C20.2906 6.12 18.7738 6.12 17.0888 6.12H11.0235M4.95808 6.12H7" />
+            <path
+              d="M2 3L2.26121 3.09184C3.5628 3.54945 4.2136 3.77826 4.58584 4.32298C4.95808 4.86771 4.95808 5.59126 4.95808 7.03836V9.76C4.95808 12.7016 5.02132 13.6723 5.88772 14.5862C6.75412 15.5 8.14857 15.5 10.9375 15.5H12M16.2404 15.5C17.8014 15.5 18.5819 15.5 19.1336 15.0504C19.6853 14.6008 19.8429 13.8364 20.158 12.3075L20.6578 9.88275C21.0049 8.14369 21.1784 7.27417 20.7345 6.69708C20.2906 6.12 18.7738 6.12 17.0888 6.12H11.0235M4.95808 6.12H7" />
           </svg>
           <span *ngIf="isOpen()" class="text-sm font-medium">Orders</span>
         </a>
       </li>
 
-      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-[#C8E6C9] text-gray-500">
+      <li routerLinkActive="bg-[#E6F4EA]" [routerLinkActiveOptions]="{ exact: true }"
+        class="hover:bg-[#C8E6C9] text-gray-500">
         <a routerLink="/users" class="h-16 px-4 flex items-center w-full"
-           [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
-           [attr.title]="!isOpen() ? 'Users' : null">
+          [ngClass]="isOpen() ? 'justify-start space-x-4 pl-4' : 'justify-center'"
+          [attr.title]="!isOpen() ? 'Users' : null">
           <svg class="h-7 w-7 text-gray-500" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="6" r="4" stroke="#0d0d0d" stroke-width="1.5" />
-            <path d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634" stroke="#0d0d0d" stroke-width="1.5" stroke-linecap="round" />
+            <path
+              d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
+              stroke="#0d0d0d" stroke-width="1.5" stroke-linecap="round" />
           </svg>
           <span *ngIf="isOpen()" class="text-sm font-medium">Users</span>
         </a>
       </li>
+      }
     </ul>
   </div>
+
 
   <div class="fixed bottom-0">
     <div class="h-16 flex items-center w-full border-t border-gray-500">
