@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { HttpTokenService } from '../services/auth/http-token.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Validators } from '@angular/forms';
+import { UpdateButtonComponent } from "../components/buttons/update-button/update-button.component";
+import { DeleteButtonComponent } from "../components/buttons/delete-button/delete-button.component";
+import { CancelButtonComponent } from "../components/buttons/cancel-button/cancel-button.component";
 
 @Component({
   selector: 'app-settings',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule, UpdateButtonComponent, DeleteButtonComponent, CancelButtonComponent],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
 })
@@ -35,18 +38,8 @@ export class SettingsComponent {
   this.tokenSvc.getUser().subscribe(response => {
     this.user = response;
     this.userId = this.user.id;
-    this.loadUserData(); 
   });
 }
-
-  loadUserData() {
-    this.tokenSvc.getUserData().subscribe(user => {
-      this.settingsForm.patchValue({
-        name: user.name,
-        email: user.email
-      });
-    });
-  }
 
   updateUser() {
     if (this.settingsForm.invalid) return;

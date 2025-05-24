@@ -44,7 +44,7 @@ export const routes: Routes = [
     { path: 'users/new', component: UserFormComponent, canActivate: [authGuard] },
     { path: 'users/edit/:id', component: UserFormComponent, canActivate: [authGuard] },
 
-    { path: '**', redirectTo: 'home' }
+    { path: '**', redirectTo: 'login' }
 ];
 
 

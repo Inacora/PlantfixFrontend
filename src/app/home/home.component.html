@@ -1,24 +1,27 @@
-<div class="p-30">
-    <main class="flex justify-between mt-[10vh] mb-20 gap-20">
-        <div class="flex-1">
-            <app-hero />
-        </div>
+<div class="p-6 md:p-10 lg:p-20">
+  <!-- Hero section -->
+  <main class="grid grid-cols-1 lg:grid-cols-2 gap-10 my-20 place-items-center">
+    <div class="w-full flex justify-center">
+      <app-hero />
+    </div>
+    <div class="w-full flex justify-center">
+      <app-hero-text />
+    </div>
+  </main>
 
-        <div class="flex-1">
-            <app-hero-text />
-        </div>
-    </main>
+  <!-- Animated icons section -->
+  <section class="text-center py-10">
+    <app-animated-icons />
+  </section>
 
-    <section class="text-center p-5">
-        <app-animated-icons />
-    </section>
-
-    <section class="flex justify-between p-5">
-        <div class="flex-1">
-            <app-plant-tips-text/>
-        </div>
-        <div class="flex-1">
-            <app-product-item />
-        </div>
-    </section>
+  <!-- Tips & products section -->
+  <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-10 place-items-center">
+    <div class="w-full flex justify-center">
+      <app-plant-tips-text />
+    </div>
+    <div class="w-full flex justify-center">
+      <app-product-item />
+    </div>
+  </section>
 </div>
+
