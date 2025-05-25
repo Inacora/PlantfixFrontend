@@ -17,6 +17,7 @@ export class OrderDetailComponent implements OnInit{
 
   orderID: string | null = null;
   order: any = null;
+  user: any | null;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +32,10 @@ export class OrderDetailComponent implements OnInit{
         this.order = data;
       });
     }
+
+       this.orderService.getUserByOrder(this.orderID).subscribe(user => {
+        this.user = user;
+    });
   }
 
   updateStatus() {
@@ -38,7 +43,7 @@ export class OrderDetailComponent implements OnInit{
     this.orderService.updateOrderStatus(this.orderID, this.order.status).subscribe({
       next: (response) => {
         alert('Order status updated successfully.');
-        console.log(response); 
+        console.log(response);
       },
       error: (errorResponse) => {
         console.error(errorResponse);

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,9 +11,24 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<any> {
-    return this.http.get(this.apiUrl, { withCredentials: true });
+   getUsers(page: number = 1, perPage: number = 10, query: string = ''): Observable<any> {
+  let params = new HttpParams()
+    .set('page', page.toString())
+    .set('perPage', perPage.toString());
+
+  if (query.trim()) {
+    params = params.set('q', query.trim());
   }
+
+  return this.http.get(this.apiUrl, { params, withCredentials: true });
+}
+
+
+ searchUsers(query: string): Observable<any> {
+    const params = new HttpParams().set('q', query);
+  return this.http.get(`${this.apiUrl}/search`, { params, withCredentials: true });
+  }
+
 
   getUser(id: string) {
     return this.http.get(`${this.apiUrl}/${id}`, { withCredentials: true });

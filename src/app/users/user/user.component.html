@@ -1,136 +1,121 @@
 <div class="w-full mt-[14vh] mb-[2vh] py-2 text-slate-700 bg-white dark:bg-zinc-700 shadow-lg rounded-xl ">
-    <div class="flex items-center justify-between px-4 gap-80">
-        <div>
-            <h1 class="text-lg font-semibold text-slate-800 dark:text-white">User List</h1>
-            <p class="text-slate-500">Check the info before updating/deleting</p>
-        </div>
-        <div class="flex flex-col gap-2 shrink-0 sm:flex-row">
-            <div class="mx-3">
-                <div class="w-full max-w-sm min-w-[200px] relative">
-                    <form id="search-form" action="" method="GET">
-                        <label for="search" class="sr-only">Search by user</label>
-                        <app-search-input />
-                    </form>
-                </div>
-            </div>
-            <app-add-button routerLink="/users/new" />
-        </div>
+  <div class="flex items-center justify-between px-4 gap-80">
+    <div>
+      <h1 class="text-lg font-semibold text-slate-800 dark:text-white">User List</h1>
+      <p class="text-slate-500">Check the info before updating/deleting</p>
     </div>
+    <div class="flex flex-col gap-2 shrink-0 sm:flex-row">
+      <div class="mx-3">
+        <div class="relative w-46 max-w-sm">
+          <input id="search" name="search" type="search" placeholder="Search..." value="" [(ngModel)]="query_user"
+            class="w-full h-9 border border-gray-300 rounded-md py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-[#69b85d]" />
+          <button type="submit" aria-label="Buscar" (click)="onSearch()" [disabled]="!query_user"
+            class="absolute inset-y-0 right-2 flex items-center text-gray-500 hover:text-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </button>
+        </div>
 
-    <div class="p-0">
-        <table class="w-full mt-4 text-left table-auto">
-            <thead>
-                <tr>
-                    <th
-                        class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
-                        <p
-                            class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
-                            ID
-                        </p>
-                    </th>
-
-                    <th
-                        class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
-                        <p
-                            class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
-                            Name
-                        </p>
-                    </th>
-
-                    <th
-                        class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
-                        <p
-                            class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
-                            Email
-                        </p>
-                    </th>
-
-                    <th
-                        class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
-                        <p class="flex items-center justify-center text-sm font-normal leading-none text-slate-500">
-                            Actions</p>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @if(users.length === 0){
-                <p class="p-4 text-center text-slate-500">
-                    No users found
-                </p>
-                }@else{
-                @for (user of users; track user.id) {
-                <tr>
-                    <td class="p-4 border-b border-slate-200">
-                        <div class="flex flex-col items-center">
-                            <p class="text-sm font-semibold text-slate-700 dark:text-white">
-                                {{ user.id }}
-                            </p>
-                        </div>
-                    </td>
-
-                    <td class="p-4 border-b border-slate-200">
-                        <div class="flex flex-col items-center">
-                            <p class="text-sm text-slate-500 dark:text-white">
-                                {{ user.name }}
-                            </p>
-                        </div>
-                    </td>
-
-                    <td class="p-4 border-b border-slate-200">
-                        <div class="flex flex-col items-center">
-                            <p class="text-sm text-slate-500 dark:text-white">
-                                {{ user.email }}
-                            </p>
-                        </div>
-                    </td>
-
-                    <td class="p-4 border-b border-slate-200 text-center">
-                        <div class="flex justify-center items-center">
-                            <!-- Botón Editar -->
-                            <app-edit-button routerLink="/users/edit/{{ user.id }}" />
-                        </div>
-                    </td>
-                </tr>
-                } }
-            </tbody>
-        </table>
+      </div>
+      <app-add-button routerLink="/users/new" />
     </div>
-
-
-    <!-- <div class="flex justify-between items-center px-4 py-3">
   </div>
-    </div>
-    <div class="flex space-x-1">
-      @if ($fields->onFirstPage())
-    <button  class="flex items-center justify-center px-3 py-1 min-w-9 min-h-9">
-      Anterior
-    </button>
-      @else
-    <button href="{{ $fields->previousPageUrl() }}" class="flex items-center justify-center px-3 py-1 min-w-9 min-h-9">
-      Anterior
-    </button>
-      @endif
 
-        @foreach ($fields->getUrlRange(1, $fields->lastPage()) as $page => $url)
-      @if ($page == $fields->currentPage())
-      <button class="flex items-center justify-center px-3 py-1 min-w-9 min-h-9">
-        {{ $page }}
-      </button>
-      @else
-      <button href="{{ $url }}" class="flex items-center justify-center px-3 py-1 min-w-9 min-h-9">
-        {{ $page }}
-      </button>
-      @endif
-        @endforeach
+  <div class="p-0">
+    <table class="w-full mt-4 text-left table-auto">
+      <thead>
+        <tr>
+          <th
+            class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
+            <p class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
+              ID
+            </p>
+          </th>
 
-        @if ($fields->hasMorePages())
-      <button href="{{ $fields->nextPageUrl() }}" class="flex items-center justify-center px-3 py-1 min-w-9 min-h-9">
-      Siguiente
-      </button>
-        @else
-      <button class="flex items-center justify-center px-3 py-1 min-w-9 min-h-9">
-      Siguiente
-      </button>
-      @endif
-    </div> -->
+          <th
+            class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
+            <p class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
+              Name
+            </p>
+          </th>
+
+          <th
+            class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
+            <p class="flex items-center justify-center gap-2 text-sm font-normal leading-none text-slate-500">
+              Email
+            </p>
+          </th>
+
+          <th
+            class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-300 dark:border-zinc-200 dark:hover:bg-zinc-200">
+            <p class="flex items-center justify-center text-sm font-normal leading-none text-slate-500">
+              Actions</p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @if(users.length === 0){
+        <p class="p-4 text-center text-slate-500">
+          No users found
+        </p>
+        }@else{
+        @for (user of users; track user.id) {
+        <tr>
+          <td class="p-4 border-b border-slate-200">
+            <div class="flex flex-col items-center">
+              <p class="text-sm font-semibold text-slate-700 dark:text-white">
+                {{ user.id }}
+              </p>
+            </div>
+          </td>
+
+          <td class="p-4 border-b border-slate-200">
+            <div class="flex flex-col items-center">
+              <p class="text-sm text-slate-500 dark:text-white">
+                {{ user.name }}
+              </p>
+            </div>
+          </td>
+
+          <td class="p-4 border-b border-slate-200">
+            <div class="flex flex-col items-center">
+              <p class="text-sm text-slate-500 dark:text-white">
+                {{ user.email }}
+              </p>
+            </div>
+          </td>
+
+          <td class="p-4 border-b border-slate-200 text-center">
+            <div class="flex justify-center items-center">
+              <!-- Botón Editar -->
+              <app-edit-button routerLink="/users/edit/{{ user.id }}" />
+            </div>
+          </td>
+        </tr>
+        } }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flex justify-center items-center mt-4 space-x-2">
+  <button
+    (click)="onPageChange(currentPage - 1)"
+    [disabled]="currentPage === 1"
+    class="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+  >
+    Anterior
+  </button>
+  <span class="text-sm">Página {{ currentPage }} de {{ totalPages }}</span>
+  <button
+    (click)="onPageChange(currentPage + 1)"
+    [disabled]="currentPage === totalPages || totalPages === 0"
+    class="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+  >
+    Siguiente
+  </button>
+</div>
+
 </div>
