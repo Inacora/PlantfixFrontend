@@ -18,7 +18,7 @@
       @for (plant of plants; track plant.id) {
       <div class=" bg-[#fbf9f5] rounded-md shadow p-4 flex flex-col">
         <div class="relative">
-          <img [src]="plant.image_url" [alt]="plant.name" class="mb-4 rounded w-full h-65 object-cover">
+          <img [src]="plant.image_url" [alt]="'Image: ' + plant.name" class="mb-4 rounded w-full h-65 object-cover">
 
           @if (plant.stock >= 1 && plant.stock < 5) { <span
             class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">
@@ -27,12 +27,29 @@
             }
         </div>
 
-        <h3 class="font-semibold text-lg mb-2">{{ plant.name }}</h3>
-        <p class="text-sm text-gray-600 mb-2">{{ plant.description }}</p>
-        <p class="text-sm text-gray-500 mb-2">Family: {{ plant.plant_family.name }}</p>
-        <p class="text-sm text-gray-600 mb-2">Stock: {{ plant.stock }}</p>
+        <h2 class="font-semibold text-lg mb-2">{{ plant.name }}</h2>
 
-        <div class="flex items-center justify-between px-2">
+        <div class="text-sm">
+          <div class="mb-2">
+            <h2 class="font-semibold text-gray-700 mb-1">Description:</h2>
+            <p class="text-gray-600">{{ plant.description }}</p>
+          </div>
+
+  
+          <div class="flex flex-wrap gap-x-6 gap-y-2 items-center">
+            <div class="flex items-center gap-1">
+              <h2 class="font-semibold text-gray-700">Family:</h2>
+              <p class="text-gray-500">{{ plant.plant_family.name }}</p>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <h2 class="font-semibold text-gray-700">Stock:</h2>
+              <p class="text-gray-600">{{ plant.stock }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between px-2 pt-4">
           <p class="text-lg font-bold">${{ plant.price }}</p>
 
           @if(plant.stock > 0){

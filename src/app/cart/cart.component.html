@@ -1,28 +1,33 @@
 <div class="p-30">
-    <h2 class="text-xl font-bold mb-4">Your cart</h2>
+    <h2 class="text-xl text-center font-bold mb-4">Your cart</h2>
 
     @if (cartService.getItems().length === 0) {
-    <p>Your cart is empty</p>
-    <button routerLink="/plants/shop" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded">
-        Go to shop
-    </button>
+    <p class="mb-4">Your cart is empty</p>
+    <app-shop-now-button routerLink="/plants/shop" />
     } @else {
     @for (item of cartService.getItems(); track item.id) {
-    <div class="flex items-center gap-4 mb-2">
-        <span>{{ item.name }} - </span>
-        <input type="number" min="1" [max]="item.stock" [(ngModel)]="item.quantity"
+    <div class="flex items-center gap-4 mb-4 border-b border-gray-200 pb-4">
+        <label [for]="'quantity-' + item.id">{{ item.name }} -</label>
+      
+        <input [id]="'quantity-' + item.id" type="number" min="1" [max]="item.stock" [(ngModel)]="item.quantity"
             (ngModelChange)="cartService.updateQuantity(item, item.quantity)"
             class="w-16 border rounded px-2 py-1 text-center" />
         <span>x ${{ item.price }} = ${{ item.price * item.quantity }}</span>
-        <button (click)="cartService.removeFromCart(item)" class="ml-2 text-red-600 hover:underline">
-            Delete
-        </button>
+        <app-delete-button (click)="cartService.removeFromCart(item)" />
     </div>
     }
 
-    <p class="font-semibold mt-4">Total: ${{ cartService.getTotalPrice() }}</p>
-    <button (click)="goToCheckout()" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded">
-        Checkout
-    </button>
+    <p class="font-semibold text-center text-xl mt-4">Total: ${{ cartService.getTotalPrice() }}</p>
+
+    <div class="flex justify-center mt-4 gap-8">
+        <button (click)="goToCheckout()"
+            class="bg-[#008523] hover:bg-[#69b85d] text-white px-4 py-2 mt-2 rounded cursor-pointer">
+            Checkout
+        </button>
+        <button (click)="cartService.clearCart()"
+            class="bg-slate-500 text-white hover:bg-slate-600 px-4 py-2 mt-2 rounded cursor-pointer">
+            Clear cart
+        </button>
+    </div>
     }
 </div>

@@ -4,10 +4,12 @@ import { OrderService } from '../services/order/order.service';
 import { HttpTokenService } from '../services/auth/http-token.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShopNowButtonComponent } from "../components/buttons/shop-now-button/shop-now-button.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ShopNowButtonComponent, RouterModule],
   templateUrl: './checkout.component.html'
 })
 export class CheckoutComponent {

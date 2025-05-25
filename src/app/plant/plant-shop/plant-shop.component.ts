@@ -30,7 +30,7 @@ export class PlantShopComponent {
       this.addedPlants.add(plant.id);
       setTimeout(() => {
         this.addedPlants.delete(plant.id);
-      }, 2000); 
+      }, 1000); 
     }
   }
 
