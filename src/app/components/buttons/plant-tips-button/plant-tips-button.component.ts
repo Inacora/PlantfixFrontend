@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-plant-tips-button',
   imports: [],
   templateUrl: './plant-tips-button.component.html',
-  styleUrl: './plant-tips-button.component.css'
+  styleUrls: []
 })
 export class PlantTipsButtonComponent {
 

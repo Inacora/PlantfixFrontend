@@ -8,6 +8,7 @@ import { HttpTokenService } from '../../../services/auth/http-token.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './sidebar.component.html',
+  styleUrls: []
 })
 export class SidebarComponent {
   isOpen = signal(true);

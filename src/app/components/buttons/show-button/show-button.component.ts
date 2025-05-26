@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-show-button',
   imports: [],
   templateUrl: './show-button.component.html',
-  styleUrl: './show-button.component.css'
+  styleUrls: []
 })
 export class ShowButtonComponent {
 

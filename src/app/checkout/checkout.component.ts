@@ -10,7 +10,8 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-checkout',
   imports: [ReactiveFormsModule, ShopNowButtonComponent, RouterModule],
-  templateUrl: './checkout.component.html'
+  templateUrl: './checkout.component.html',
+  styleUrls: []
 })
 export class CheckoutComponent {
   cartItems: any[] = [];

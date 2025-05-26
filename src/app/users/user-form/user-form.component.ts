@@ -13,7 +13,7 @@ import { CancelButtonComponent } from '../../components/buttons/cancel-button/ca
   selector: 'app-user-form',
   imports: [ReactiveFormsModule, RouterModule, DeleteButtonComponent, CancelButtonComponent, UpdateButtonComponent, CreateButtonComponent],
   templateUrl: './user-form.component.html',
-  styleUrl: './user-form.component.css'
+  styleUrls: []
 })
 export class UserFormComponent implements OnInit {
   userForm = new FormGroup({
@@ -80,32 +80,35 @@ export class UserFormComponent implements OnInit {
     });
   }
 
-  updateUser() {
-    const user = {
-      name: this.userForm.get('name')?.value,
-      email: this.userForm.get('email')?.value,
-      password: this.userForm.get('password')?.value,
-      password_confirmation: this.userForm.get('password_confirmation')?.value,
-      role: this.userForm.get('role')?.value,
-    };
+updateUser() {
+  const updatedFields: any = {};
+  const formValues = this.userForm.value;
 
-    if (this.userId) {
-      this.service.updateUser(this.userId || '', user).subscribe({
-        next: (response) => {
-          console.log('User updated successfully', response);
-          this.backendErrors = {};
-          this.router.navigate(['/users']);
-        },
-        error: (errorResponse) => {
-          if (errorResponse.status === 422) {
-            this.backendErrors = errorResponse.error.errors;
-          } else {
-            console.error('Unexpected error:', errorResponse);
-          }
-        }
-      });
+  // Solo agregar los campos que tienen un valor no vacío ni null
+  Object.keys(formValues).forEach(key => {
+    const value = formValues[key as keyof typeof formValues];
+    if (value !== null && value !== '') {
+      updatedFields[key] = value;
     }
+  });
+
+  if (this.userId) {
+    this.service.updateUser(this.userId, updatedFields).subscribe({
+      next: (response) => {
+        console.log('User updated successfully', response);
+        this.backendErrors = {};
+        this.router.navigate(['/users']);
+      },
+      error: (errorResponse) => {
+        if (errorResponse.status === 422) {
+          this.backendErrors = errorResponse.error.errors;
+        } else {
+          console.error('Unexpected error:', errorResponse);
+        }
+      }
+    });
   }
+}
 
   deleteUser() {
     if (!this.userId) return;

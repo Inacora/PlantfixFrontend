@@ -10,6 +10,7 @@ import { ShopNowButtonComponent } from '../components/buttons/shop-now-button/sh
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   imports: [FormsModule, RouterModule, DeleteButtonComponent, ShopNowButtonComponent],
+  styleUrls: []
 })
 export class CartComponent {
   constructor(public cartService: CartService, private http: HttpClient, private router: Router) {}

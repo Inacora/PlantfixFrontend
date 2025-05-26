@@ -3,14 +3,13 @@ import { UserService } from '../../services/users/user.service';
 import { RouterModule } from '@angular/router';
 import { AddButtonComponent } from '../../components/buttons/add-button/add-button.component';
 import { EditButtonComponent } from '../../components/buttons/edit-button/edit-button.component';
-import { SearchInputComponent } from "../../components/inputs/search-input/search-input.component";
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
-  imports: [RouterModule, AddButtonComponent, EditButtonComponent, SearchInputComponent,FormsModule],
+  imports: [RouterModule, AddButtonComponent, FormsModule, EditButtonComponent],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrls: []
 })
 export class UserComponent {
 
@@ -18,7 +17,7 @@ export class UserComponent {
 
   users: any[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 8;
   totalItems: number = 0;
   totalPages: number = 0;
 query_user: string = ''; 

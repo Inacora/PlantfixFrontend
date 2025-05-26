@@ -9,13 +9,17 @@ export class PlantService {
 
   constructor(private http: HttpClient) { }
 
- getPlants(page: number = 1, perPage: number = 10): Observable<any> {
-  const params = new HttpParams()
-    .set('page', page.toString())
-    .set('perPage', perPage.toString());
+  getPlants(page: number = 1, perPage: number = 8): Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('perPage', perPage.toString());
 
-  return this.http.get(this.apiUrl, { params, withCredentials: true });
-}
+    return this.http.get(this.apiUrl, { params, withCredentials: true });
+  }
+
+  getPlantFamilies(): Observable<any[]> {
+    return this.http.get<any[]>('/api/plant-families', { withCredentials: true });
+  }
 
   getPlant(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`, { withCredentials: true });
@@ -33,8 +37,8 @@ export class PlantService {
     return this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true });
   }
 
-     searchPlants(query: string): Observable<any> {
+  searchPlants(query: string): Observable<any> {
     const params = new HttpParams().set('q', query);
-  return this.http.get(`${this.apiUrl}/search`, { params, withCredentials: true });
+    return this.http.get(`${this.apiUrl}/search`, { params, withCredentials: true });
   }
 }

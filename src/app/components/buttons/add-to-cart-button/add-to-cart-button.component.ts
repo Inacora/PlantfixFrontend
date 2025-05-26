@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone:true,
   imports: [],
   templateUrl: './add-to-cart-button.component.html',
-  styleUrl: './add-to-cart-button.component.css'
+  styleUrls: []
 })
 export class AddToCartButtonComponent {
 

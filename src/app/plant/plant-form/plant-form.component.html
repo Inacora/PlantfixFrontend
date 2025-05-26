@@ -60,7 +60,7 @@
     <div class="m-2">
       <label for="plant_family_id">Family</label>
       <select id="plant_family_id" formControlName="plant_family_id" class="border border-gray-300 rounded p-2 w-full" required>
-        @for (family of uniquePlantFamilies; track family.id) {
+        @for (family of plantFamilies; track family.id) {
           <option [value]="family.id">{{ family.name }}</option>
         }
       </select>

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-update-button',
   imports: [],
   templateUrl: './update-button.component.html',
-  styleUrl: './update-button.component.css'
+  styleUrls: []
 })
 export class UpdateButtonComponent {
 

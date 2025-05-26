@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-   getUsers(page: number = 1, perPage: number = 10, query: string = ''): Observable<any> {
+   getUsers(page: number = 1, perPage: number = 8, query: string = ''): Observable<any> {
   let params = new HttpParams()
     .set('page', page.toString())
     .set('perPage', perPage.toString());

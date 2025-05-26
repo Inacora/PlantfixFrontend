@@ -2,21 +2,20 @@ import { Component } from '@angular/core';
 import { OrderService } from '../services/order/order.service';
 import { RouterModule } from '@angular/router';
 import { EditButtonComponent } from '../components/buttons/edit-button/edit-button.component';
-import { SearchInputComponent } from "../components/inputs/search-input/search-input.component";
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-order',
   imports: [RouterModule, EditButtonComponent, FormsModule],
   templateUrl: './order.component.html',
-  styleUrl: './order.component.css'
+  styleUrls: []
 })
 export class OrderComponent {
 constructor(private orderService: OrderService){}
 
 orders: any[] = [];
  currentPage: number = 1;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 8;
   totalItems: number = 0;
   totalPages: number = 0;
     query_order: string = '';

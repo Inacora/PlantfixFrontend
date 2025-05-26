@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   selector: 'app-login',
   imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: []
 })
 export class LoginComponent implements OnInit {
   errMessage!: string | null;
@@ -27,14 +27,12 @@ export class LoginComponent implements OnInit {
       password: [''],
     });
 
-    // Verificar si el usuario ya está autenticado
     this.svc.getUser().subscribe({
       next: (user) => {
         this.user = user;
         this.router.navigate(['/home']);
       },
       error: () => {
-        // Si no está autenticado, no hacer nada
       }
     });
   }
@@ -46,19 +44,16 @@ export class LoginComponent implements OnInit {
     next: () => {
       this.svc.login(email, password).subscribe({
         next: () => {
-          // Después del login, obtiene los datos del usuario
           this.svc.getUser().subscribe({
             next: (user) => {
-              // Aquí puedes guardar los datos del usuario
               this.user = user;
 
-              // Si quieres, guarda el rol en sessionStorage
-              sessionStorage.setItem('role', user.role); // 🔐 o en un servicio
-              
+              sessionStorage.setItem('role', user.role); 
+
               this.router.navigate(['/home']);
             },
             error: () => {
-              this.errMessage = 'No se pudo obtener la información del usuario';
+              this.errMessage = 'Failed to obtain user information';
             }
           });
         },
@@ -73,7 +68,7 @@ export class LoginComponent implements OnInit {
       });
     },
     error: () => {
-      this.errMessage = 'No se pudo obtener el token CSRF';
+      this.errMessage = 'Failed to obtain CSRF token';
     }
   });
 }

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-edit-button',
   imports: [],
   templateUrl: './edit-button.component.html',
-  styleUrl: './edit-button.component.css'
+  styleUrls: []
 })
 export class EditButtonComponent {
 

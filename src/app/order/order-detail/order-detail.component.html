@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between">
         <p class="mb-4">Order: {{ order.id }}</p>
         <div class="flex gap-4 mb-3">
-            <app-cancel-button routerLink="/plants" />
+            <app-cancel-button routerLink="/orders" />
         </div>
     </div>
 
@@ -13,32 +13,32 @@
 
       <div class="space-y-2">
         <div class="flex gap-2 border-b border-gray-200 pb-4">
-          <p class="font-bold text-md text-gray-500 w-32">User:</p>
-          <p class="text-md text-gray-500">{{ user.name }}</p>
+          <p class="font-bold text-md w-32">User Name:</p>
+          <p class="text-md">{{ user.name }}</p>
         </div>
         <div class="flex gap-2 border-b border-gray-200 pb-4">
-          <p class="font-bold text-md text-gray-500 w-32">User:</p>
-          <p class="text-md text-gray-500">{{ user.email }}</p>
+          <p class="font-bold text-md w-32">User Email:</p>
+          <p class="text-md">{{ user.email }}</p>
         </div>
         <div class="flex gap-2 border-b border-gray-200 pb-4">
-          <p class="font-bold text-md text-gray-500 w-32">Date:</p>
-          <p class="text-md text-gray-500">{{ order.order_date }}</p>
+          <p class="font-bold text-md w-32">Date:</p>
+          <p class="text-md">{{ order.order_date }}</p>
         </div>
         <div class="flex gap-2 border-b border-gray-200 pb-4">
-          <p class="font-bold text-md text-gray-500 w-32">Address:</p>
-          <p class="text-md text-gray-500">{{ order.address }}</p>
+          <p class="font-bold text-md w-32">Address:</p>
+          <p class="text-md">{{ order.address }}</p>
         </div>
         <div class="flex gap-2 border-b border-gray-200 pb-4">
-          <p class="font-bold text-md text-gray-500 w-32">City:</p>
-          <p class="text-md text-gray-500">{{ order.city }}</p>
+          <p class="font-bold text-md w-32">City:</p>
+          <p class="text-md">{{ order.city }}</p>
         </div>
         <div class="flex gap-2 border-b border-gray-200 pb-4">
-          <p class="font-bold text-md text-gray-500 w-32">Country:</p>
-          <p class="text-md text-gray-500">{{ order.country }}</p>
+          <p class="font-bold text-md w-32">Country:</p>
+          <p class="text-md">{{ order.country }}</p>
         </div>
         <div class="flex gap-2 pb-4">
-          <p class="font-bold text-md text-gray-500 w-32">Phone:</p>
-          <p class="text-md text-gray-500">{{ order.phone_number }}</p>
+          <p class="font-bold text-md w-32">Phone Number:</p>
+          <p class="text-md">{{ order.phone_number }}</p>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@
                 </tbody>
             </table>
             <div class="flex items-center justify-center mt-4">
-                <p class="text-gray-500 font-semibold">Total: ${{ order.total_price}}</p>
+                <p class="font-semibold">Total: ${{ order.total_price}}</p>
             </div>
 
             <div class="mt-10 text-center text-sm text-gray-700">

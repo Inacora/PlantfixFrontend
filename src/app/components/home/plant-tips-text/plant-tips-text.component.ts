@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-plant-tips-text',
   imports: [PlantTipsButtonComponent, RouterModule],
   templateUrl: './plant-tips-text.component.html',
-  styleUrl: './plant-tips-text.component.css'
+  styleUrls: []
 })
 export class PlantTipsTextComponent {
 

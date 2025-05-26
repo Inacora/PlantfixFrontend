@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-added-to-cart-button',
   imports: [],
   templateUrl: './added-to-cart-button.component.html',
-  styleUrl: './added-to-cart-button.component.css'
+  styleUrls: []
 })
 export class AddedToCartButtonComponent {
 

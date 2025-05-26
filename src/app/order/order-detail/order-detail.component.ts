@@ -11,7 +11,7 @@ import { CancelButtonComponent } from '../../components/buttons/cancel-button/ca
   selector: 'app-order-detail',
   imports: [RouterModule, FormsModule, UpdateButtonComponent, DeleteButtonComponent, CancelButtonComponent],
   templateUrl: './order-detail.component.html',
-  styleUrl: './order-detail.component.css'
+  styleUrls: []
 })
 export class OrderDetailComponent implements OnInit{
 

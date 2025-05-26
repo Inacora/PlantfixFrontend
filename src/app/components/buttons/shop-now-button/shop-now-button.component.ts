@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-shop-now-button',
   imports: [],
   templateUrl: './shop-now-button.component.html',
-  styleUrl: './shop-now-button.component.css'
+  styleUrls: []
 })
 export class ShopNowButtonComponent {
 

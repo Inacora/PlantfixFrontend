@@ -9,7 +9,7 @@ import { CancelButtonComponent } from '../../components/buttons/cancel-button/ca
   standalone: true,
   imports: [RouterModule, CancelButtonComponent],
   templateUrl: './plant-detail.component.html',
-  styleUrls: ['./plant-detail.component.css'] 
+  styleUrls: []
 })
 export class PlantDetailComponent implements OnInit {
   plantID: string | null = null;

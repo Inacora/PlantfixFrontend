@@ -9,14 +9,14 @@ import { OutOfStockButtonComponent } from '../../components/buttons/out-of-stock
   selector: 'app-plant-shop',
   imports: [AddToCartButtonComponent, AddedToCartButtonComponent, OutOfStockButtonComponent],
   templateUrl: './plant-shop.component.html',
-  styleUrl: './plant-shop.component.css'
+  styleUrls: []
 })
 
 export class PlantShopComponent {
     plants: any[] = [];
   addedPlants = new Set<number>();
   currentPage: number = 1;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 8;
   totalItems: number = 0;
   totalPages: number = 0;
 

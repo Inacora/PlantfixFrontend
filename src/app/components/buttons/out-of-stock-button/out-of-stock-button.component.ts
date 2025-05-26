@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-out-of-stock-button',
   imports: [],
   templateUrl: './out-of-stock-button.component.html',
-  styleUrl: './out-of-stock-button.component.css'
+  styleUrls: []
 })
 export class OutOfStockButtonComponent {
 

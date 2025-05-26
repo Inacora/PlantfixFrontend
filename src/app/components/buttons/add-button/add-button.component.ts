@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-add-button',
   imports: [],
   templateUrl: './add-button.component.html',
-  styleUrl: './add-button.component.css'
+  styleUrls: []
 })
 export class AddButtonComponent {
 

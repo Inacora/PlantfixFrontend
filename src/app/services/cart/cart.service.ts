@@ -19,22 +19,22 @@ export class CartService {
   addToCart(plant: any): boolean {
   if (plant.stock <= 0) {
     alert("Out of stock");
-    return false;  // No añadido
+    return false;  
   }
   const found = this.cart.find(p => p.id === plant.id);
   if (found) {
     if (found.quantity < found.stock) {
       found.quantity++;
       this.updateCartCount();
-      return true;  // Añadido correctamente
+      return true; 
     } else {
       alert("You cannot add more than the available quantity in stock");
-      return false; // No añadido
+      return false; 
     }
   } else {
     this.cart.push({ ...plant, quantity: 1 });
     this.updateCartCount();
-    return true;    // Añadido correctamente
+    return true;    
   }
 }
 

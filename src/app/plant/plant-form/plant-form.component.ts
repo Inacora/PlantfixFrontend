@@ -13,7 +13,7 @@ import { CancelButtonComponent } from "../../components/buttons/cancel-button/ca
   selector: 'app-plant-form',
   imports: [ReactiveFormsModule, RouterModule, DeleteButtonComponent, CreateButtonComponent, UpdateButtonComponent, CancelButtonComponent],
   templateUrl: './plant-form.component.html',
-  styleUrl: './plant-form.component.css'
+  styleUrls: []
 })
 
 export class PlantFormComponent implements OnInit {
@@ -29,37 +29,38 @@ export class PlantFormComponent implements OnInit {
   constructor(private route: ActivatedRoute, private service: PlantService, private router: Router) { }
 
   plants: any[] = [];
-  uniquePlantFamilies: any[] = [];
+  plantFamilies: any[] = [];
   plantId: string | null = null;
   backendErrors: { [key: string]: string[] } = {};
   isEditMode = false;
 
-  ngOnInit() {
-    this.plantId = this.route.snapshot.paramMap.get('id');
-    this.isEditMode = !!this.plantId;
+ ngOnInit() {
+  this.plantId = this.route.snapshot.paramMap.get('id');
+  this.isEditMode = !!this.plantId;
 
-    this.service.getPlants().subscribe(data => {
-      this.backendErrors = {};
-      this.plants = data as any[];
+ this.service.getPlants().subscribe(response => {
+  this.plants = response.data;
 
-      const familyMap = new Map();
-      this.uniquePlantFamilies = this.plants
-        .map(p => p.plant_family)
-        .filter(family => {
-          if (!familyMap.has(family.id)) {
-            familyMap.set(family.id, true);
-            return true;
-          }
-          return false;
-        });
+  const familyMap = new Map();
+
+  this.plantFamilies = this.plants
+    .map(p => p.plant_family)
+    .filter(family => {
+      if (!familyMap.has(family.id)) {
+        familyMap.set(family.id, true);
+        return true;
+      }
+      return false;
     });
+});
 
-    if (this.isEditMode && this.plantId) {
-      this.service.getPlant(this.plantId).subscribe(plant => {
-        this.plantForm.patchValue(plant);
-      });
-    }
+
+  if (this.isEditMode && this.plantId) {
+    this.service.getPlant(this.plantId).subscribe(plant => {
+      this.plantForm.patchValue(plant);
+    });
   }
+}
 
   onSubmit() {
     if (this.isEditMode) {

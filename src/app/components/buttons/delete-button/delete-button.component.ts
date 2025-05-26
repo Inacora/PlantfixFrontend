@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-delete-button',
   imports: [],
   templateUrl: './delete-button.component.html',
-  styleUrl: './delete-button.component.css'
+  styleUrls: []
 })
 export class DeleteButtonComponent {
 

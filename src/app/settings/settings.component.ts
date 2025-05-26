@@ -11,7 +11,7 @@ import { CancelButtonComponent } from "../components/buttons/cancel-button/cance
   selector: 'app-settings',
   imports: [ReactiveFormsModule, UpdateButtonComponent, DeleteButtonComponent, CancelButtonComponent],
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css'
+  styleUrls: []
 })
 export class SettingsComponent {
   settingsForm!: FormGroup;
@@ -22,7 +22,6 @@ export class SettingsComponent {
   constructor(private tokenSvc: HttpTokenService, private router: Router, private fb: FormBuilder) {}
 
   ngOnInit() {
-    // Primero inicializa el formulario con valores vacíos
     this.settingsForm = this.fb.group({
       name: [''],
       email: [''],
@@ -30,7 +29,6 @@ export class SettingsComponent {
       password_confirmation: [''],
     });
 
-    // Luego obtén el usuario y actualiza el formulario con sus valores actuales
     this.tokenSvc.getUser().subscribe(response => {
       this.user = response;
       this.userId = this.user.id;

@@ -9,7 +9,7 @@ import { switchMap } from 'rxjs/operators';
   selector: 'app-register',
   imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: []
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
@@ -31,14 +31,12 @@ export class RegisterComponent implements OnInit {
       role: ['user']
     });
     
-    // Verificar si el usuario ya está autenticado
     this.svc.getUser().subscribe({
       next: (user) => {
         this.user = user;
         this.router.navigate(['/home']);
       },
       error: () => {
-        // Si no está autenticado, no hacer nada
       }
     });
   }
@@ -48,10 +46,8 @@ export class RegisterComponent implements OnInit {
 
     const payload = this.registerForm.value;
 
-    // 1) Primero pedimos la cookie CSRF
     this.svc.getCsrfCookie()
       .pipe(
-        // 2) Una vez establecida, llamamos a register
         switchMap(() => this.svc.register(payload))
       )
       .subscribe({

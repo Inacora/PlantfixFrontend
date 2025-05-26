@@ -13,7 +13,7 @@ export class OrderService {
      return this.http.post(this.apiUrl, order, { withCredentials: true });
    }
 
- getOrders(page: number = 1, perPage: number = 10, query: string = ''): Observable<any> {
+ getOrders(page: number = 1, perPage: number = 8, query: string = ''): Observable<any> {
   let params = new HttpParams()
     .set('page', page.toString())
     .set('perPage', perPage.toString());
